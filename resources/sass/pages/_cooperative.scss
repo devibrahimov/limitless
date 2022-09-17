@@ -1,0 +1,69 @@
+#cooperative{
+    h5{
+        padding-bottom: $p20;
+        @include myfont($SF_Pro, normal, 600, 20px, 32px, $black);
+    }
+    .cooperative-section_info{
+        padding-bottom: $p20;
+        p{
+            @include myfont($SF_Pro, normal, 600, 20px, 32px, $black);
+        }
+    }
+    .cooperative-section_params{
+        padding-bottom: $p20;
+        .cooperative-section_param{
+            @include myfont($SF_Pro, normal, 400, 16px, 24px, $black);
+            span{
+                @include myfont($SF_Pro, normal, 600, 16px, 24px, $black);
+            }
+        }
+    }
+    .cooperative-offers,.cooperative-contact{
+        padding-bottom: $p20;
+        ul{
+            li{
+                @include myfont($SF_Pro, normal, 400, 16px, 24px, $black);
+            }
+        }
+    }
+    .cooperative-form{
+        margin-bottom: $p52;
+        h3{
+            padding-bottom: $p16;
+            @include myfont($SF_Pro, normal, 400, 28px, 48px, $black);
+        }
+        form{
+            .cooperative-form_section{
+                @include grid-box(repeat(auto-fill, minmax(350px, 1fr)), dense, 24px);
+                .cooperative-form_field{
+                    display: flex;
+                    flex-direction: column;
+                    label{
+                        padding-bottom: $p8;
+                        @include myfont($SF_Pro, normal, 400, 14px, 24px, $black);
+                    }
+                    input,textarea{
+                        padding: $p12 $p16;
+                        @include border(1px solid #BDC3C7,4px);
+                    }
+                    textarea{
+                        width: 100%;
+                    }
+                }
+                .cooperative-form_text{
+                    grid-column: span 3;
+                }
+            }
+            .cooperative-button{
+                @include flex-box(flex-end, flex-end);
+                button{
+                    color: $white;
+                    margin-top: $p24;
+                    padding: 12px 64px;
+                    @include border(none, 4px);
+                    background-color: $main_green;
+                }
+            }
+        }
+    }
+}

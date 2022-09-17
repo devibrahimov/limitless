@@ -1,0 +1,58 @@
+// All vacancies section 
+.vacancies-section{
+    @include grid-box(repeat(auto-fill, minmax(250px,1fr)),dense, 24px);
+    .vacancy{
+        padding: $p24 $p24 $p28 $p20;
+        @include border(1px solid $gray400,4px);
+        .vacancy-name{
+            padding-bottom: $p4;
+            @include myfont($SF_Pro, normal, 600, 24px, 32px, $black);
+        }
+        .vacancy-info{
+            padding-bottom: $p12;
+            @include myfont($SF_Pro, normal, 400, 14px, 24px, $gray800);
+        }
+        .vacancy-more{
+            width: 100%;
+            color: $white;
+            border-radius: 4px;
+            background-color: $main_green;
+            @include flex-box(center,center);
+            a{
+                color: $white;
+                padding: $p12;
+                display: block;
+                text-align: center;
+                width: 100%;
+            }
+        }
+    }
+}
+// Vacancy details section
+.vacancy-details{
+    @include grid-box(repeat(auto-fill, minmax(450px,1fr)),dense, 0);
+    row-gap: 48px;
+    column-gap: 24px;
+    margin-bottom: 80px;
+    .vacancy-detail{
+        width: 100%;
+        .vacancy-detail_title{
+            width: 100%;
+            margin-bottom: $p8;
+            background-color: $gray100;
+            border-left: 5px solid $main_green;
+            h5{
+                padding: $p12 $p24;
+                @include myfont($SF_Pro, normal, 600, 20px, 32px, $black);
+            }
+        }
+        .vacancy-details_list{
+            .vacancy-detail_list-item{
+                @include myfont($SF_Pro, normal, 500, 16px, 32px, $gray900);
+                &::last-child{
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+}

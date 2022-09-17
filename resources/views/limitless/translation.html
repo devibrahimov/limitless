@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="icon" href="/demo/react/edumint/assets/img/favicon.png" sizes="20x20" type="image/png" />
+    <link rel="stylesheet" href="./assets/css/vendor.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/responsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+      <div class="preloader-inner">
+        <div class="spinner">
+          <div class="dot1"></div>
+          <div class="dot2"></div>
+        </div>
+      </div>
+    </div>
+    <!-- preloader area end -->
+
+    <!-- search popup start-->
+    <div class="td-search-popup" id="td-search-popup">
+      <form action="index.html" class="search-form">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search....." />
+        </div>
+        <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+    <!-- search popup end-->
+    <div class="body-overlay" id="body-overlay"></div>
+
+    <!-- navbar start -->
+    <div class="navbar-area">
+      <nav class="navbar navbar-area-1 navbar-area navbar-expand-lg">
+        <div class="container nav-container">
+          <div class="responsive-mobile-menu">
+            <button
+              class="menu toggle-btn d-block d-lg-none"
+              data-target="#edumint_main_menu"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="icon-left"></span><span class="icon-right"></span>
+            </button>
+          </div>
+          <div class="logo">
+            <a href="/"><img src="./assets/img/limitlesswhite.png" alt="img" /></a>
+          </div>
+          <div class="nav-right-part nav-right-part-mobile">
+            <a class="signin-btn" href="signin.html">Sign In</a><a class="btn btn-base" href="blog.html">Sign Up</a
+            ><a class="search-bar" href="#"><i class="fa fa-search"></i></a>
+          </div>
+          <div class="collapse navbar-collapse go-top" id="edumint_main_menu">
+            <ul class="navbar-nav menu-open">
+              <li class="current-menu-item">
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="blog.html">News</a>
+              </li>
+              <li>
+                <a href="course.html">Course</a>
+              </li>
+              <li>
+                <a href="translation.html">Translation</a>
+              </li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="nav-right-part nav-right-part-desktop">
+            <a class="signin-btn" href="signin.html">Sign In</a><a class="btn btn-base" href="signup.html">Sign Up</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- navbar end -->
+
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-area bg-overlay" style="background-image: url('https://solverwp.com/demo/html/edumint/assets/img/bg/3.png')">
+      <div class="container">
+        <div class="breadcrumb-inner">
+          <div class="section-title mb-0 text-center">
+            <h2 class="page-title">Translation</h2>
+            <ul class="page-list">
+              <li><a href="index.html">Home</a></li>
+              <li>Translation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- breadcrumb end -->
+
+    <!-- signup-page-Start -->
+    <div class="signup-page-area pd-top-120 pd-bottom-120">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-6 col-lg-7">
+            <form class="signin-inner">
+              <div class="row">
+                <div class="col-12">
+                  <div class="single-input-inner style-bg-border">
+                    <input type="text" placeholder="First Name" />
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="single-input-inner style-bg-border">
+                    <input type="text" placeholder="Last Name" />
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="single-input-inner style-bg-border">
+                    <input type="text" placeholder="Email" />
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="single-input-inner style-bg-border">
+                    <input type="tel" placeholder="Phone" />
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="single-input-inner style-bg-border">
+                    <label for="real-life">
+                      <div class="file-group">
+                        <input type="file" name="image" id="real-life" hidden />
+                        <button type="button" id="custom-button">Choose file</button>
+                        <span id="custom-text">No file chosen</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 mb-30">
+                <div class="col-12 mb-4">
+                  <button class="btn btn-base w-100">Create Account</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- signup-page-end -->
+  </body>
+  <script>
+    const realFileBtn = document.getElementById("real-life");
+    const customBtn = document.getElementById("custom-button");
+    const customTxt = document.getElementById("custom-text");
+
+    customBtn.addEventListener("click", function () {
+      realFileBtn.click();
+    });
+
+    realFileBtn.addEventListener("change", function () {
+      if (realFileBtn.value) {
+        customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+      } else {
+        customTxt.innerHTML = "No file chosen";
+      }
+    });
+  </script>
+  <script src="/assets/js/vendor.js"></script>
+  <script async="" src="/assets/js/main.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/all.min.js"
+    integrity="sha512-8pHNiqTlsrRjVD4A/3va++W1sMbUHwWxxRPWNyVlql3T+Hgfd81Qc6FC5WMXDC+tSauxxzp1tgiAvSKFu1qIlA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+</html>

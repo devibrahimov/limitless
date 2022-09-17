@@ -1,0 +1,85 @@
+// Account profile
+
+// My Account 
+.myAccount-section{
+    padding: $p28 0 80px 0;
+    @include grid-box(repeat(auto-fill, minmax(250px,1fr)),dense, 24px);
+    @include md-screen{
+        display: flex;
+        flex-direction: column;
+    }
+    .profile-form{
+        grid-column: span 3;
+        .profile-form_title{
+            @include flex-box(space-between,center);
+            h3{
+                @include myfont($SF_Pro, normal, 600, 28px, 48px, $black);
+            }
+            a{
+                @include myfont($SF_Pro, normal, 400, 16px, 24px, $gray900);
+            }
+        }
+        form{
+            margin-top: $p24;
+            align-items: flex-end;
+            @include grid-box(repeat(auto-fill, minmax(250px,1fr)),dense, 24px);
+            .profile-form_field{
+                display: flex;
+                flex-direction: column;
+                label{
+                    padding-bottom: $p8;
+                    @include myfont($SF_Pro, normal, 400, 14px, 24px, $black);
+                }
+                input{
+                    outline: none;
+                    padding: $p12 $p16;
+                    @include border(1px solid #BDC3C7,4px);
+                    &::-webkit-inner-spin-button{
+                        appearance: none;
+                    }
+                }
+            }
+            button{
+                height: 60%;
+                border: none;
+                color: $white;
+                outline: none;
+                border-radius: 4px;
+                background-color: $main_green;
+            }
+        }
+    }
+}
+
+// My Orders
+.profile-form{
+    table{
+        border: none;
+        border-collapse: collapse;
+        tr{
+            @include md-screen{
+                overflow-x: scroll;
+            }
+            &:nth-child(n+2){
+                margin-bottom: $p4;
+                background-color: #F3F5F8;
+                border-bottom: 4px solid white;
+                th{ 
+                    color: $gray900;
+                }
+            }
+            th{
+                padding: $p12 $p16;
+                @include myfont($SF_Pro, normal, 400, 14px, 24px, $gray800);
+                &:first-child{
+                    border-top-left-radius: 4px;
+                    border-bottom-left-radius: 4px;
+                }
+                &:last-child{
+                    border-top-right-radius: 4px;
+                    border-bottom-right-radius: 4px;
+                }
+            }
+        }
+    }
+} 

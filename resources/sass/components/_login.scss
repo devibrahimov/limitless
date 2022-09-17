@@ -1,0 +1,144 @@
+.login{
+    padding: $p12;
+    border-radius: 6px;
+    background-color: $white;
+    @include flex-box(initial,normal);
+    .login-img{
+        width: 100%;
+        border-radius: 6px 0 0 6px;
+        @include sm-screen{
+            display: none;
+        }
+        .login-logo{
+            padding: $p12 $p28;
+            img{
+                width: 157px;
+            }
+        }   
+        .login-intro{
+            padding: $p36 $p28;
+            h1{
+                @include myfont($SF_Pro, normal, 700, 36px, 52px, $black);
+            }
+            p{
+                width: 80%;
+                padding-top: $p8;
+                @include myfont($SF_Pro, normal, 400, 14px, 24px, $gray900);
+            }
+        }
+    }
+        
+    .login-form{
+        width: 100%;
+        padding-left: $p36;
+        @include sm-screen{
+            padding-left: 0;
+        }
+        .close-login{
+            padding-top: $p12;
+                @include flex-box(flex-end, center);
+                .tuning_number{
+                    padding-right: $p40;
+                }
+                .close{
+                    @include border(1px solid #E4E8EE,100%);
+                    padding: 6px 10px;
+                    color: #2D3131;
+                    float: initial;
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+        }
+        .login-form_section,.register-form_section{
+            width: 90%;
+            .login-text{
+                    padding: $p28 0 0 0;
+                    h3{
+                        @include myfont($SF_Pro, normal, 600, 32px, 52px, $black);
+                    }
+                    p{
+                        @include myfont($SF_Pro, normal, 400, 14px, 24px, $gray900);
+                    }
+            }
+            form{
+                padding-top: $p20;
+                .register-name{
+                    @include flex-box(space-between,center);
+                    .login-field{
+                        width: 48%;
+                    }
+                }
+                .login-field{ 
+                    display: flex;
+                    cursor: pointer;
+                    position: relative;
+                    padding-bottom: $p16;
+                    flex-direction: column;
+                    label{
+                        padding-bottom: $p8;
+                        @include myfont($SF_Pro, normal, 400, 14px, 24px, $black);
+                    }
+                    input{
+                        outline: none;
+                        padding: $p12 $p16;
+                        @include border(1px solid $gray500, 4px);
+                        @include myfont($SF_Pro, normal, 400, 16px, 24px, $black);
+                        &::placeholder{
+                            color: $gray600;
+                        }
+                    }
+                    .showPassword,.hidePassword{
+                        position: absolute;
+                        top: 50%;
+                        right: 1%;
+                        padding:0 8px;
+                        background: white;
+                        svg{
+                            color: $gray600;
+                        }
+                    }
+                    .hidePassword{
+                        display: none;
+                    }
+                }
+                .lost-password{
+                    @include flex-box(flex-end,flex-end);
+                    p{
+                        cursor: pointer;
+                        @include myfont($SF_Pro, normal, 500, 12px, 16px, $gray900);
+                    }
+                }
+                .privacy-rules{
+                    text-align: center;
+                    @include myfont($SF_Pro, normal, 400, 14px, 24px, $black);
+                    a{
+                        text-decoration: underline;
+                    }
+                }
+                .enterButton{
+                    width: 100%;
+                    outline: none;
+                    padding: $p12;
+                    margin-top: $p20;
+                    background-color: $main_green;
+                    @include border(1px solid $main_green, 4px);
+                    @include myfont($SF_Pro, normal, 600, 16px, 24px, $white);
+                }
+                .registration{
+                    padding: $p8 0 $p16 0;
+                    p{
+                        @include myfont($SF_Pro, normal, 500, 14px, 24px, $gray800);
+                    }
+                    span{
+                        cursor: pointer;
+                        text-decoration: underline;
+                        @include myfont($SF_Pro, normal, 500, 14px, 24px, $black);
+                    }
+                }
+            }
+        }
+        .register-form_section{
+            display: none;
+        }
+    }
+}

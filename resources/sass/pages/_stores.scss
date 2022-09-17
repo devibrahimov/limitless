@@ -1,0 +1,25 @@
+.stores{
+    @include grid-box(repeat(auto-fill, minmax(250px,1fr)),dense, 24px);
+    .store{
+        padding: $p12;
+        align-items: flex-start;
+        background: #C4C4C403;
+        @include border(1px solid #DEE2E8,4px);
+        .store-img{
+            img{
+                width: 100%;
+                height: 140px;
+                object-fit: cover;
+            }
+        }
+        .store-info{
+            padding: $p8 0;
+            h6{
+                @include myfont($SF_Pro, normal, 500, 16px, 24px, $black);
+            }
+            p{
+                @include myfont($SF_Pro, normal, 400, 14px, 24px, $gray800);
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+.profile-menu{
+    padding: $p32 $p12;
+    border-radius: 4px;
+    grid-column: span 1;
+    background-color: $gray100;
+    .profile-greeting{
+        padding-left: $p12;
+        h5{
+            @include myfont($SF_Pro, normal, 600, 24px, 32px, $black);
+        }
+    }
+    .profile-menu_items{
+        padding-top: $p16;
+        @include md-screen{
+            display: flex;
+            overflow-x: scroll;
+        }
+        .profile-menu_item{
+            padding: $p16 $p12;
+            border-bottom: 1px solid $white;
+            &:last-child{
+                border-bottom: 0;
+            }
+            @include flex-box(initial,center);
+            .profile-menu_icon{
+                width: 40px;
+                height: 40px;
+                @include flex-box(center,center);
+            }
+            h6{
+                padding-left: $p12;
+                @include myfont($SF_Pro, normal, 400, 16px, 24px, $gray800);
+            }
+        }
+    }
+}
