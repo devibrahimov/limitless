@@ -11,11 +11,9 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table)
         {
             $table->increments('id');
-            $table->unsignedInteger('parent_id')->default('0');
-//            $table->enum('home',['1','0'])->default('0');
-//            $table->enum('mega',['1','0'])->default('0');
+            $table->string('name', 255)->nullable();
+            $table->string('slug', 255)->unique()->nullable();
             $table->enum('status', [1, 0])->default(1);
-            $table->unsignedInteger('order')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

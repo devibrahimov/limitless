@@ -20,81 +20,83 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Category extends Model  implements HasMedia
+class Category extends Model
 {
-    use HasFactory,
-        NestableTrait,
-        Translatable,
-        TranslatableColumnsTrait,
-        HasSlug,
-        Sortable,
-        SoftDeletes,
-        CascadeSoftDeletes,
-        InteractsWithMedia,
-        SpatieLogsActivity;
 
-    protected $fillable = ['parent_id', 'status','order'];
-    protected $translatedAttributes = ['name','slug'];
-    protected $parent = 'parent_id';
-    protected $cascadeDeletes = ['translations'];
+    protected $fillable = ['name','status'];
 
-    public $with = ['translations','media'];
-
-    protected $dates = ['deleted_at'];
-
-    public function registerMediaConversions(Media $media = null): void
-    {
-        $this
-            ->addMediaConversion('thumb-small')
-            ->width(22)
-            ->height(22)
-            ->optimize()
-            ->queued();
-
-        $this
-            ->addMediaConversion('thumb-medium')
-            ->width(180)
-            ->height(180)
-            ->optimize()
-            ->queued();
-
-        $this
-            ->addMediaConversion('thumb-large')
-            ->width(312)
-            ->height(244)
-            ->queued();
-    }
-
-    public function getAppUrlAttribute(): string
-    {
-        if (isset($this->transslug)) {
-            return route('frontend.category.show', ['slug' => $this->transslug]);
-        }
-        return 'javascript:void(0);';
-    }
-
-    public function parent():HasOne
-    {
-        return $this->hasOne(__CLASS__, 'id', 'parent_id')->where('status', '=', '1');
-    }
-
-    public function options(): HasMany
-    {
-        return $this->hasMany(OptionGroup::class)->active()->with('options');
-    }
-
-    public function subcategories(): HasMany
-    {
-        return $this->hasMany(__CLASS__,'parent_id')->where('status', '=', '1');
-    }
-
-    public function scopeParent($query)
-    {
-        return $query->where('parent_id', 0);
-    }
-
-    public function scopeActive($query)
-    {
-        return $query->where('status', '1');
-    }
+//    use HasFactory,
+//        NestableTrait,
+////        Translatable,
+////        TranslatableColumnsTrait,
+//        HasSlug,
+//        SoftDeletes,
+//        CascadeSoftDeletes,
+//        InteractsWithMedia,
+//        SpatieLogsActivity;
+//
+//    protected $fillable = ['parent_id', 'status','order'];
+//    protected $translatedAttributes = ['name','slug'];
+//    protected $parent = 'parent_id';
+//    protected $cascadeDeletes = ['translations'];
+//
+//    public $with = ['translations','media'];
+//
+//    protected $dates = ['deleted_at'];
+//
+//    public function registerMediaConversions(Media $media = null): void
+//    {
+//        $this
+//            ->addMediaConversion('thumb-small')
+//            ->width(22)
+//            ->height(22)
+//            ->optimize()
+//            ->queued();
+//
+//        $this
+//            ->addMediaConversion('thumb-medium')
+//            ->width(180)
+//            ->height(180)
+//            ->optimize()
+//            ->queued();
+//
+//        $this
+//            ->addMediaConversion('thumb-large')
+//            ->width(312)
+//            ->height(244)
+//            ->queued();
+//    }
+//
+//    public function getAppUrlAttribute(): string
+//    {
+//        if (isset($this->transslug)) {
+//            return route('frontend.category.show', ['slug' => $this->transslug]);
+//        }
+//        return 'javascript:void(0);';
+//    }
+//
+//    public function parent():HasOne
+//    {
+//        return $this->hasOne(__CLASS__, 'id', 'parent_id')->where('status', '=', '1');
+//    }
+//
+//    public function options(): HasMany
+//    {
+//        return $this->hasMany(OptionGroup::class)->active()->with('options');
+//    }
+//
+//    public function subcategories(): HasMany
+//    {
+//        return $this->hasMany(__CLASS__,'parent_id')->where('status', '=', '1');
+//    }
+//
+//    public function scopeParent($query)
+//    {
+//        return $query->where('parent_id', 0);
+//    }
+//
+//    public function scopeActive($query)
+//    {
+//        return $query->where('status', '1');
+//    }
 }

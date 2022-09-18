@@ -35,19 +35,32 @@ class NewsController extends Controller
         return view('backend.news.form', compact('edit','langs'));
     }
 
-    public function store(FormNewsRequest $request, UploadImageService $uploadImageService)
+    public function store(Request $request, UploadImageService $uploadImageService)
     {
         abort_if(Gate::denies('news create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        try {
+            $news = News::create([
+                'title' => $request->title,
+                'slug' => $request->slug,
+                'tags' => $request->tags,
+                'content' => $request->content,
+            ]);
 
-        $news = News::create($request->validated());
 
-        if ($request->hasFile('image')) {
-            $uploadImageService->upload($news, 'image', 'news_image', false, false);
+            dd($request->image);
+
+
+
+//        if ($request->hasFile('image')) {
+            $uploadImageService->upload($news, 'image', 'news_image', true, false);
+//        }
+
+        }
+        catch (\Exception $e){
+            info($e->getMessage());
         }
 
-//        if ($request->hasFile('image2')) {
-//            $uploadImageService->upload($news, 'image2', 'news_gallery', true, false);
-//        }
+
 
         return redirect(route('backend.news.index'))->withSuccess(trans('backend.messages.success.create'));
     }

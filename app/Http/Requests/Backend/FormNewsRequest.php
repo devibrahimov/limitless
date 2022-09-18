@@ -49,7 +49,6 @@ class FormNewsRequest extends FormRequest
         if ($this->filled('_method') && $this->get('_method') == 'PUT') {
             $return[] = [
                 'image' => 'filled',
-                'image2' => 'filled',
             ];
         }
 

@@ -20,5 +20,5 @@
 @section('scripts')
     @js('backend/js/sweetalert.min.js')
     @js('backend/js/datatables.bundle.js')
-    @include('backend.includes.plugins.datatable',['columns'=>['id','name','order','status','actions'], 'route'=>route('backend.categories.index')])
+    @include('backend.includes.plugins.datatable',['columns'=>['id','name','status','actions'], 'route'=>route('backend.categories.index')])
 @endsection

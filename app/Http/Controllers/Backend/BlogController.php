@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\FormBlogRequest;
-use App\Interfaces\DatatableInterface;
 use App\Models\Blog;
 use App\Services\MediaLibrary\UploadImageService;
 use Illuminate\Http\Request;
@@ -50,10 +49,10 @@ class BlogController extends Controller
 
         try {
             DB::transaction(function () use ($request, $uploadImageService) {
-                $blogs = Blog::create($request->validated());
+                $blog = Blog::create($request->validated());
 
                 if ($request->hasFile('image')) {
-                    $uploadImageService->upload($blogs, 'image', 'blog_images', true, false);
+                    $blog->addMediaFromRequest('image')->toMediaCollection('blog_images');
                 }
 
             });
@@ -85,9 +84,8 @@ class BlogController extends Controller
 
         $blog->update($request->validated());
 
-        if($request->hasFile('image')){
-            $uploadImageService->upload($blog, 'image','blog_images',true,false);
-            return redirect(route('backend.blogs.index'))->withSuccess(trans('backend.messages.success.update'));
+        if ($request->hasFile('image')) {
+            $blog->addMediaFromRequest('image')->toMediaCollection('blog_images');
         }
 
         return redirect(route('backend.blogs.index'))->withSuccess(trans('backend.messages.success.update'));

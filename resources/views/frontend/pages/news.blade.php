@@ -31,11 +31,11 @@
     <div class="blog-area pd-top-120 pd-bottom-120">
         <div class="container">
             <div class="row">
-                @foreach($newTranslates as $new)
+                @foreach($news as $new)
                 <div class="col-lg-4 col-md-6">
                     <div class="single-blog-inner style-border">
                         <div class="thumb">
-                            <img src="{{ $new->getFirstMediaUrl('news_image','thumb-medium') }}" alt="img">
+                            <img src="{{ $new->getFirstMediaUrl('blog_images','thumb-medium') }}" alt="img">
                         </div>
                         <div class="details">
                             <ul class="blog-meta">
@@ -45,24 +45,28 @@
                             <h5><a href="{{ $new->transslug }}">{{ $new->transtitle }}</a></h5>
 
                             <p>{{$new->content}}</p>
-                            <a class="read-more-text" href="blog-details.html">READ MORE <i
+                            <a class="read-more-text" href="{{route('frontend.news.show',$new->id)}}">READ MORE <i
                                         class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 text-center">
-                    <nav class="td-page-navigation">
-                        <ul class="pagination">
-                            <li class="pagination-arrow"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a class="active" href="#">2</a></li>
-                            <li><a href="#">...</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="pagination-arrow"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-                        </ul>
-                    </nav>
-                </div>
                 @endforeach
+{{--                <div class="col-12 text-center">--}}
+{{--                    <nav class="td-page-navigation">--}}
+{{--                        <ul class="pagination">--}}
+{{--                            <li class="pagination-arrow"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>--}}
+{{--                            <li><a href="#">1</a></li>--}}
+{{--                            <li><a class="active" href="#">2</a></li>--}}
+{{--                            <li><a href="#">...</a></li>--}}
+{{--                            <li><a href="#">3</a></li>--}}
+{{--                            <li class="pagination-arrow"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>--}}
+{{--                        </ul>--}}
+{{--                    </nav>--}}
+{{--                </div>--}}
+                                    <div class="col-12 text-center">
+
+                    {!!$news->links('vendor.pagination.limitless-paginate')  !!}
+                                    </div>
             </div>
         </div>
     </div>

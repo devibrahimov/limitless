@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AboutBlockController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\AdminLangController;
 use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CampaignController;
 use App\Http\Controllers\Backend\CampaignDetailController;
 use App\Http\Controllers\Backend\CampaignTypeController;
@@ -14,11 +15,13 @@ use App\Http\Controllers\Backend\GoalController;
 use App\Http\Controllers\Backend\HomeCompareController;
 use App\Http\Controllers\Backend\InstallmentCardController;
 use App\Http\Controllers\Backend\InstallmentCardMonthController;
+use App\Http\Controllers\Backend\LevelController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\ProductDayController;
 use App\Http\Controllers\Backend\ProjectController;
+use App\Http\Controllers\Backend\TeacherController;
 use App\Http\Controllers\Backend\TeamController;
 use App\Http\Controllers\Backend\UploadsController;
 use App\Http\Controllers\Backend\UserController;
@@ -87,6 +90,19 @@ Route::group(['middleware' => ['auth:admin', 'minify']], function ()
     Route::resource('events',EventController::class);
     // News Route
     Route::resource('news',NewsController::class);
+
+    Route::patch('/blogs/{id}/coverimg', [BlogController::class,'coverimg'])->name('blogs.coverimg');
+    Route::get('/blogs/{id}/deleteimg', [BlogController::class,'deleteimg'])->name('blogs.deleteimg');
+    Route::resource('/blogs',             BlogController::class);
+
+    Route::patch('/teachers/{id}/coverimg', [TeacherController::class, 'coverimg'])->name('teachers.coverimg');
+    Route::get('/teachers/{id}/deleteimg', [TeacherController::class,'deleteimg'])->name('teachers.deleteimg');
+    Route::resource('/teachers',             TeacherController::class);
+
+    Route::patch('/levels/{id}/coverimg', [LevelController::class, 'coverimg'])->name('levels.coverimg');
+    Route::get('/levels/{id}/deleteimg', [LevelController::class,'deleteimg'])->name('levels.deleteimg');
+    Route::resource('/levels',             LevelController::class);
+
     // Teams Route
     Route::resource('teams',TeamController::class);
     // Goal Route
