@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\FormBlogRequest;
 use App\Models\Blog;
-use App\Models\News;
 use App\Services\MediaLibrary\UploadImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,8 +25,8 @@ class BlogController extends Controller
         {
             $limit = request('length');
             $start = request('start');
-            $count = News::count();
-            $data = News::latest()->offset($start)->limit($limit)->get();
+            $count = Blog::count();
+            $data = Blog::latest()->offset($start)->limit($limit)->get();
 
             return $this->dataTable($data, $count);
         }
