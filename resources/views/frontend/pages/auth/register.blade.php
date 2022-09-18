@@ -11,10 +11,10 @@
         <div class="container">
             <div class="breadcrumb-inner">
                 <div class="section-title mb-0 text-center">
-                    <h2 class="page-title">Blog</h2>
+                    <h2 class="page-title">Qeydiyyat</h2>
                     <ul class="page-list">
-                        <li><a href="index.html">Home</a></li>
-                        <li>Blog</li>
+                        <li><a href="/">Ana Səhifə</a></li>
+                        <li>Qeydiyyat</li>
                     </ul>
                 </div>
             </div>
@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-7">
-                    <form class="signin-inner" action="" method="post">
+                    <form class="signin-inner" action="{{route('frontend.signup')}}" method="post">
 
                         <div class="row">
                             <div class="col-12">
@@ -64,17 +64,14 @@
                             </div>
                             <div class="col-12">
                                 <div class="single-checkbox-inner">
-                                    <input type="checkbox" />
-                                    By clicking "create account".
+                                    <input type="checkbox" required />
+                                  Qeyd olunnan məlumatların doğruluğunu təstiqləyirəm
                                 </div>
                             </div>
                             <div class="col-12 mb-4">
-                                <button class="btn btn-base w-100">Create Account</button>
+                                <button type="submit"  class="btn btn-base w-100">Qeydiyyat</button>
                             </div>
-                            <div class="col-12">
-                                <span>By creating an account</span>
-                                <button type="submit" ><strong>Qeydiyyat</strong></button>
-                            </div>
+
                         </div>
                     </form>
                 </div>

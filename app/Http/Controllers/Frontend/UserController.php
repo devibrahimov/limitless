@@ -10,28 +10,23 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
+class UserController extends Controller
 {
 
-    public function index(){
-
-        return view('frontend.pages.register');
+    public function profil(){
+        $user = User::where(['id' => auth()->user()->id])->first();
+        return view('frontend.pages.cabinet.profil',compact(['user']));
     }
 
-    public function register(Request $request){
-
-        $user = [
-            'uuid' =>rand(11111,99999),
-            'first_name' =>$request-> name,
-            'last_name' => $request->surname,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ];
-
-
-        User::insert($user);
-
+    public function courses(){
+        return view('frontend.pages.cabinet.courses');
     }
+
+
+    public function results(){
+        return view('frontend.pages.cabinet.results');
+    }
+
+
 
 }

@@ -49,7 +49,7 @@ class NewsController extends Controller
 //            $uploadImageService->upload($news, 'image2', 'news_gallery', true, false);
 //        }
 
-        return redirect(route('backend.news.index'))->withSuccess(trans('backend.messages.success.create'));
+    //    return redirect(route('backend.news.index'))->withSuccess(trans('backend.messages.success.create'));
     }
 
     public function show(News $news)

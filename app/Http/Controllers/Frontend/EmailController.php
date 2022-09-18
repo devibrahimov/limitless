@@ -27,4 +27,34 @@ class EmailController extends Controller
 
         return redirect()->back();
     }
+
+
+
+    public function translation(){
+
+    }
+
+
+    public function sendtranslation(Request $request){
+        $email='info@caspisnet.org';
+        $array = [
+
+            'name'=> $request->name,
+            'email'=>$request->email,
+            'msg'=>$request->msg,
+            'number'=>$request->phone,
+            'subject'=>$request->subject
+        ];
+
+        Mail::send('frontend.pages.email', $array,  function ($message) use($email)  {
+            $message->to( $email, 'Caspisnet');
+            $message->subject('Caspisnet');
+
+        });
+
+        return redirect()->back();
+    }
+
+
+
 }

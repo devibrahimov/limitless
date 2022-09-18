@@ -17,9 +17,9 @@
 
 
 
-<script src="{{ asset('frontend') }}/js/custom.js"></script>
-<script src="{{ asset('frontend') }}/js/main.js"></script>
-<script src="{{ asset('frontend') }}/js/vendor.js"></script>
+<script src="/assets/js/vendor.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/custom.js"></script>
 <script>
       !(function (e) {
         function t(t) {
