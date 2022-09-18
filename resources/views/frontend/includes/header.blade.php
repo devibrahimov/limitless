@@ -35,31 +35,36 @@
             <a href="{{route('frontend.course.index')}}">Course</a>
           </li>
           <li>
-            <a href="translation.html">Translation</a>
+            <a href="{{route('frontend.translation')}}">Translation</a>
           </li>
-          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="{{route('frontend.contact')}}">Contact Us</a></li>
         </ul>
       </div>
-      <div class="nav-right-part nav-right-part-desktop">
-{{--        <a class="signin-btn" href="{{route('frontend.signin')}}">Sign In</a>--}}
+        @auth()
 
-          <a class="btn btn-base" href="{{route('frontend.signup')}}">Qeydiyyat</a>
-      </div>
+            @if(auth()->guard('web'))
       <div class="nav-right-part nav-right-part-desktop position-relative">
         <button class="profile">
           <span>Jane</span>
-          <img
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                  alt="Profile"
-          />
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                  alt="Profile"   />
         </button>
         <ul class="dropdown">
-          <li><a href="cabinet.html"> Profil </a></li>
-          <li><a href="cabinet-courses.html">Kurslar</a></li>
-          <li><a href="#">Əlaqə</a></li>
+          <li><a href="{{route('frontend.cabinet_profil')}}"> Profil </a></li>
+          <li><a href="{{route('frontend.cabinet_courses')}}">Kurslar</a></li>
+          <li><a href="{{route('frontend.cabinet_results')}}">Nəticələrim</a></li>
           <li><a href="#">Çıxış</a></li>
         </ul>
       </div>
+            @endif
+
+
+        @else
+            <div class="nav-right-part nav-right-part-desktop">
+                <a class="signin-btn" href="{{route('frontend.signin')}}">Sign In</a>
+                <a class="btn btn-base" href="{{route('frontend.signup')}}">Register</a>
+            </div>
+      @endauth
     </div>
   </nav>
 </div>
