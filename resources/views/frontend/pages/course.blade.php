@@ -31,81 +31,82 @@
     <div class="blog-area pd-top-120 pd-bottom-120">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 order-lg-12">
-                    <div class="row">
-                        @foreach($courses as $course)
-                        <div class="col-md-6">
-                            <div class="single-course-inner">
-                                <div class="thumb">
-                                    <img src="{{$course->getFirstMediaUrl('course_image','thumb-large') }}" alt="img" />
-                                </div>
-                                <div class="details">
-                                    <div class="details-inner">
-                                        <div class="emt-user">
-                                            <span class="u-thumb"><img src="assets/img/author/1.png" alt="img" /></span>
-                                            <span class="align-self-center">{{$course->title}}</span>
-                                        </div>
-                                        <h6><a href="course-details.html">{{$course->content}}</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                    {!!$courses->links('vendor.pagination.limitless-paginate')  !!}
-
+                <div class="col-lg-8 order-lg-12" id="list">
+                   @include('frontend.includes.courseList')
                 </div>
                 <div class="col-lg-4 order-lg-1 col-12">
                     <div class="td-sidebar mt-5 mt-lg-0">
                         <div class="widget widget_catagory">
                             <h4 class="widget-title">Catagory</h4>
                             <ul class="catagory-items">
-                                <li>
-                                    <a href="#">All</a>
-                                </li>
+
                               @foreach($categories as $category)
                                     <li>
-                                        <a href="#">{{$category->name}}</a>
+                                    <label class="single-checkbox">
+
+                                        <input type="radio" name="category" class="category" value="{{$category->id}}"/>
+                                        <span class="checkmark"></span>
+                                        {{$category->name}}
+                                    </label>
                                     </li>
                                 @endforeach
                             </ul>
                         </div>
                         <div class="widget widget_checkbox_list">
                             <h4 class="widget-title">Level</h4>
-                            <label class="single-checkbox">
-                                <input type="checkbox" checked="checked" />
-                                <span class="checkmark"></span>
-                                Beginner
-                            </label>
-                            <label class="single-checkbox">
-                                <input type="checkbox" />
-                                <span class="checkmark"></span>
-                                Intermediate
-                            </label>
-                            <label class="single-checkbox">
-                                <input type="checkbox" />
-                                <span class="checkmark"></span>
-                                Advanced
-                            </label>
+                            @foreach($levels as $level)
+                                <label class="single-checkbox">
+                                    <input type="radio" name="level" class="level" value="{{$level->id}}" />
+                                    <span class="checkmark"></span>
+                                    {{$level->name}}
+                                </label>
+                             @endforeach
                         </div>
                         <div class="widget widget_range">
                             <h4 class="widget-title">Price</h4>
                             <span class="multi-range">
-                  <input type="range" min="0" max="1000" value="250" id="lower" />
-                  <input type="range" min="0" max="1000" value="750" id="upper" />
-                </span>
-                            <span class="input-texts">
-                  <input type="number" id="lowNum" placeholder="min" value="" />
+                              <input type="range" min="0" max="1000" value="250" id="lower" />
+                              <input type="range" min="0" max="1000" value="750" id="upper" />
+                            </span>
 
-                  <input type="number" id="upNum" placeholder="max" value="" />
-                </span>
+
+
                         </div>
+
                     </div>
+                    <br>
+                    <button class="btn btn-info btn-block td-sidebar mt-5 " id="filter"> Axtar </button>
                 </div>
             </div>
         </div>
     </div>
 @endsection
 @section('scripts')
-    <script></script>
+     <script>
+
+    $('#filter').on('click',function(){
+        category = $('input[name=category]:checked').val();
+        Courselevel = $('input[name=level]:checked').val();
+        lower = $('#lower').val();
+        upper = $('#upper').val();
+
+
+
+         $.ajax({
+             type: 'GET',
+             url :'{{route('frontend.CoursefilterQuery')}}',
+             data: {
+                 'category' :category,
+                 'level' :Courselevel,
+                 'lower' :lower,
+                 'upper' :upper,
+                 '_token' : '{{csrf_token()}}'
+             } ,
+             'success':function(data){
+                 $('#list').html(' ')
+                 $('#list').append(data)
+             }
+         })
+    })
+    </script>
 @endsection

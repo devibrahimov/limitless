@@ -42,6 +42,8 @@ Route::get('/translation',[\App\Http\Controllers\TranslationController::class,'i
 Route::post('/translation',[\App\Http\Controllers\TranslationController::class,'sendtranslation']) ;
 Route::resource('/course', CourseController::class);
 
+Route::get('/CoursefilterQuery', [CourseController::class,'CoursefilterQuery'])->name('CoursefilterQuery');
+
 
 
 Route::group(['prefix' => 'cabinet'],function(){

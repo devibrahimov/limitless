@@ -49,6 +49,23 @@ class Course extends  Model implements HasMedia
         return $query->where('status', 1);
     }
 
+    public function scopeFilter($query){
+        if (request('category') != ''){
+            $query->where('category_id' , request('category'));
+        }
+        if (request('level') != ''){
+            $query->where('level_id' , request('level'));
+        }
+
+        if(request('lower') != ''){
+            $query->where('price','>=',request('lower'));
+        }
+        if(request('upper') != ''){
+            $query->where('price','<=',request('upper'));
+        }
+      return  $query;
+    }
+
     public function level()
     {
         return $this->belongsTo(Level::class);
