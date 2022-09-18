@@ -3,12 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
-use App\Models\Category;
-use App\Models\Menu;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class UserAuthController extends Controller
@@ -83,7 +79,10 @@ class UserAuthController extends Controller
 
 
     public function logout(Request $request){
-
+        auth()->logout();
+        \request()->session()->flush();
+        \request()->session()->regenerate();
+        return redirect()->route('frontend.home');
     }
 
 }
