@@ -6,7 +6,7 @@ use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\BrandController;
 use App\Http\Controllers\Frontend\GoalController;
 use App\Http\Controllers\Frontend\NewsController;
-use App\Http\Controllers\Frontend\UserAuthController;
+use App\Http\Controllers\Frontend\RegisterController;
 use App\Http\Controllers\Frontend\TeamController;
 use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -38,27 +38,14 @@ Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
 Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
 Route::get('/contact',[ContactController::class,'index'])->name('contact');
 Route::post('/email',[EmailController::class,'sendmail'])->name('sendmail');
-Route::get('/translation',[\App\Http\Controllers\TranslationController::class,'index'])->name('translation');
-Route::post('/translation',[\App\Http\Controllers\TranslationController::class,'sendtranslation']) ;
 Route::resource('/course', CourseController::class);
 
 
-
-Route::group(['prefix' => 'cabinet'],function(){
-    Route::get('/profil',[\App\Http\Controllers\Frontend\UserController::class,'profil'])->name('cabinet_profil');
-    Route::get('/courses',[\App\Http\Controllers\Frontend\UserController::class,'courses'])->name('cabinet_courses');
-    Route::get('/neticelerim',[\App\Http\Controllers\Frontend\UserController::class,'results'])->name('cabinet_results');
-
-});
+Route::get('/register',[RegisterController::class,'index'])->name('signup');
+Route::post('/register',[RegisterController::class,'register']) ;
 
 
-Route::get('/register',[UserAuthController::class,'signup'])->name('signup');
-Route::post('/register',[UserAuthController::class,'register']) ;
 
-Route::get('/signin',[UserAuthController::class,'signin'])->name('signin');
-Route::post('/signin',[UserAuthController::class,'login']) ;
-
-Route::get('/accessUserProfil/{prefix}',[UserAuthController::class,'accessUserProfil'])->name('accessUserProfil') ;
 
 
 Route::get('/', [IndexController::class, 'index'])->name('home');

@@ -10,7 +10,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\CourseTranslation;
-use App\Models\Level;
 use App\Models\Setting;
 use App\Models\Slider;
 
@@ -20,10 +19,9 @@ class CourseController extends Controller
     {
         $slider = Slider::active()->orderBy('id', 'DESC')->first();
         $setting = Setting::orderBy('created_at', 'asc')->first();
-        $categories = Category::all();
-        $levels = Level::all();
+        $categories = CategoryTranslation::all();
         $courses = Course::with('translations')->paginate(5);
-        return view('frontend.pages.course', compact('setting','slider','categories','courses','levels'));
+        return view('frontend.pages.course', compact('setting','slider','categories','courses'));
     }
 
     public function create()

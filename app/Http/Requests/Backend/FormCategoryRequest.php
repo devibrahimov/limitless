@@ -42,39 +42,43 @@ class FormCategoryRequest extends FormRequest
             return Language::active()->get();
         });
 
-//        foreach ($active_langs as $lang){
-//            $return[] = [
-//                'name:' . $lang['code'] => ['required', 'max:60'],
-//                'slug:' . $lang['code'] => ['max:60', Rule::unique('category_translations','slug')],
-////                'title:' . $lang['code'] => ['required', 'max:255'],
-////                'description:' . $lang['code'] => ['required', 'max:255'],
-////                'keywords:' . $lang['code'] => ['required', 'max:255'],
-////                'image_alt:' . $lang['code'] => ['nullable', 'max:255'],
-//            ];
-//
-//            // For Update
-//            if ($this->filled('_method') && $this->get('_method') == 'PUT') {
-//                $return[] = [
-//                    'slug:' . $lang['code'] => ['required','max:60', Rule::unique('category_translations','slug')->ignore($this->category->id, 'category_id')],
-//                ];
-//            }
-//        }
-//
-//        $return[] = [
-////            'parent_id' => 'required',
-////            'mega' => 'nullable',
-////            'icon' => 'required_if:parent_id,0|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-////            'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-////            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-//
-////            'home' => ['required'],
-////            'status' => ['required'],
-//        ];
+        foreach ($active_langs as $lang){
+            $return[] = [
+                'name:' . $lang['code'] => ['required', 'max:60'],
+                'slug:' . $lang['code'] => ['max:60', Rule::unique('category_translations','slug')],
+//                'title:' . $lang['code'] => ['required', 'max:255'],
+//                'description:' . $lang['code'] => ['required', 'max:255'],
+//                'keywords:' . $lang['code'] => ['required', 'max:255'],
+//                'image_alt:' . $lang['code'] => ['nullable', 'max:255'],
+            ];
+
+            // For Update
+            if ($this->filled('_method') && $this->get('_method') == 'PUT') {
+                $return[] = [
+                    'slug:' . $lang['code'] => ['required','max:60', Rule::unique('category_translations','slug')->ignore($this->category->id, 'category_id')],
+                ];
+            }
+        }
 
         $return[] = [
-            'name' => 'required',
-            'status' => ['required'],
+//            'parent_id' => 'required',
+//            'mega' => 'nullable',
+//            'icon' => 'required_if:parent_id,0|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+//            'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+//            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+//            'home' => ['required'],
+//            'status' => ['required'],
         ];
+
+        if ($this->filled('_method') && $this->get('_method') == 'PUT') {
+            $return[] = [
+//                'icon' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'cover' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+            ];
+        }
 
 
         return Arr::collapse($return);

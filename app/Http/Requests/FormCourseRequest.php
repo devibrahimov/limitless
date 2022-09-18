@@ -40,10 +40,6 @@ class FormCourseRequest extends FormRequest
 //            'link'=>['string','nullable'],
             'image' => 'nullable',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-           'level_id'       => 'required|integer|exists:levels,id',
-           'price'       => 'nullable|integer|exists:levels,id',
-           'teacher_id'       => 'required|integer|exists:teachers,id',
-           'category_id'       => 'required|integer|exists:categories,id',
             'status' => ['nullable'],
         ];
 

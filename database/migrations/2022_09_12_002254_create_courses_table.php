@@ -16,7 +16,6 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('teacher_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedBigInteger('level_id')->nullable();
             $table->decimal('lectures')->nullable();
             $table->decimal('price')->nullable();
             $table->string('image', 255)->nullable();

@@ -6,11 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\FormSliderRequest;
 use App\Http\Requests\Backend\FormvideoRequest;
 use App\Http\Requests\FormCourseRequest;
-use App\Models\Category;
 use App\Models\Course;
-use App\Models\Level;
 use App\Models\Slider;
-use App\Models\Teacher;
 use App\Models\Video;
 use App\Services\MediaLibrary\UploadImageService;
 use Illuminate\Http\Request;
@@ -36,13 +33,10 @@ class CourseController extends Controller
     {
         $edit = false;
         $langs = Language::active()->get();
-        $teachers =  Teacher::get();
-        $levels =  Level::get();
-        $categories =  Category::get();
-        return view('backend.courses.form', compact('edit','langs','teachers','levels','categories'));
+        return view('backend.courses.form', compact('edit','langs'));
     }
 
-    public  function store(FormCourseRequest $request, UploadImageService $uploadImageService)
+    public function store(FormCourseRequest $request, UploadImageService $uploadImageService)
     {
         $course = Course::create($request->validated());
         if ($request->hasFile('image')) {
@@ -125,10 +119,10 @@ class CourseController extends Controller
 //                return '<img src="' . $src . '" alt="' . $course->transname . '" style="width:50px; object-fit: contain;">';
 //            })
             ->addColumn('title', function ($row) {
-                return $row->title;
+                return $row->link1;
             })
             ->addColumn('price', function ($row) {
-                return $row->price;
+                return $row->link2;
             })
             ->addColumn('status', function ($row) {
                 return badge($row->status);
@@ -136,7 +130,7 @@ class CourseController extends Controller
             ->addColumn('actions', function ($row) {
                 return $this->permissions($row->id);
             })
-            ->rawColumns(['title','status','price', 'actions'])
+            ->rawColumns(['title','price', 'actions'])
             ->make(true);
     }
 

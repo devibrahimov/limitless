@@ -72,14 +72,21 @@
                         </div>
                         <div class="widget widget_checkbox_list">
                             <h4 class="widget-title">Level</h4>
-                            @foreach($levels as $level)
-                                <label class="single-checkbox">
-                                    <input type="checkbox" />
-                                    <span class="checkmark"></span>
-                                    {{$level->name}}
-                                </label>
-
-                            @endforeach
+                            <label class="single-checkbox">
+                                <input type="checkbox" checked="checked" />
+                                <span class="checkmark"></span>
+                                Beginner
+                            </label>
+                            <label class="single-checkbox">
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                                Intermediate
+                            </label>
+                            <label class="single-checkbox">
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                                Advanced
+                            </label>
                         </div>
                         <div class="widget widget_range">
                             <h4 class="widget-title">Price</h4>

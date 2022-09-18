@@ -74,57 +74,6 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="price" class="col-form-label text-right col-lg-3 col-sm-12">
-                                    Teacher
-                                </label>
-                                <div class="col-lg-6 col-md-9 col-sm-12">
-                                    <div class="input-group">
-                                        <select class="form-control" name="teacher_id">
-                                            <option value="" disabled>None</option>
-                                            @foreach($teachers as $key => $teacher)
-                                                <option value="{{ $teacher->id }}" {{ old($teacher->first_name) == $teacher->id ? "selected" : "" }}
-                                                @if(isset($course->teacher_id) && $teacher->id == $value) selected @endif >{{ $teacher->first_name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="price" class="col-form-label text-right col-lg-3 col-sm-12">
-                                    Level
-                                </label>
-                                <div class="col-lg-6 col-md-9 col-sm-12">
-                                    <div class="input-group">
-                                        <select class="form-control" name="level_id">
-                                            <option value="" disabled>None</option>
-                                            @foreach($levels as $key => $level)
-                                                <option value="{{ $level->id }}" {{ old($level->name) == $level->id ? "selected" : "" }}
-                                                @if(isset($course->level_id) && $level->id == $value) selected @endif >{{ $level->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="price" class="col-form-label text-right col-lg-3 col-sm-12">
-                                    Category
-                                </label>
-                                <div class="col-lg-6 col-md-9 col-sm-12">
-                                    <div class="input-group">
-                                        <select class="form-control" name="category_id">
-                                            <option value="" disabled>None</option>
-                                            @foreach($categories as $key => $category)
-                                                <option value="{{ $category->id }}" {{ old($category->name) == $category->id ? "selected" : "" }}
-                                                @if(isset($course->category_id) && $category->id == $value) selected @endif >{{ $category->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
                                 <label class="col-form-label text-right col-lg-3 col-sm-12">
                                     @lang('backend.labels.image')
                                     @if(!$edit)

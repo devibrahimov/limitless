@@ -62,7 +62,7 @@ class NewsController extends Controller
 
 
 
-    //    return redirect(route('backend.news.index'))->withSuccess(trans('backend.messages.success.create'));
+        return redirect(route('backend.news.index'))->withSuccess(trans('backend.messages.success.create'));
     }
 
     public function show(News $news)

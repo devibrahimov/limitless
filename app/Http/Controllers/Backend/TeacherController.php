@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\FormBlogRequest;
+use App\Http\Requests\Backend\FormTeacherRequest;
 use App\Models\Blog;
+use App\Models\Teacher;
 use App\Services\MediaLibrary\UploadImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,45 +16,45 @@ use Illuminate\Support\Str;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 
-class BlogController extends Controller
+class TeacherController extends Controller
 {
 
     public function index()
     {
-        abort_if(Gate::denies('blogs index'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+//        abort_if(Gate::denies('blogs index'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if (request()->ajax())
         {
             $limit = request('length');
             $start = request('start');
-            $count = Blog::count();
-            $data = Blog::latest()->offset($start)->limit($limit)->get();
+            $count = Teacher::count();
+            $data = Teacher::latest()->offset($start)->limit($limit)->get();
 
             return $this->dataTable($data, $count);
         }
 
-        return view('backend.blogs.index');
+        return view('backend.teacher.index');
     }
 
     public function create()
     {
-        abort_if(Gate::denies('blogs create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+//        abort_if(Gate::denies('blogs create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $edit = false;
 
-        return view('backend.blogs.form',compact('edit'));
+        return view('backend.teacher.form',compact('edit'));
     }
 
-    public function store(FormBlogRequest $request, UploadImageService $uploadImageService)
+    public function store(FormTeacherRequest $request, UploadImageService $uploadImageService)
     {
-        abort_if(Gate::denies('blogs store'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+//        abort_if(Gate::denies('blogs store'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         try {
             DB::transaction(function () use ($request, $uploadImageService) {
-                $blog = Blog::create($request->validated());
+                $teacher = Teacher::create($request->validated());
 
                 if ($request->hasFile('image')) {
-                    $blog->addMediaFromRequest('image')->toMediaCollection('blog_images');
+                    $uploadImageService->upload($teacher, 'image', 'teachers_image', true, false);
                 }
 
             });
@@ -60,27 +62,27 @@ class BlogController extends Controller
             Log::channel('backend')->error($e->getMessage());
         }
 
-        return redirect(route('backend.blogs.index'))->withSuccess(trans('backend.messages.success.create'));
+        return redirect(route('backend.teachers.index'))->withSuccess(trans('backend.messages.success.create'));
     }
 
-    public function show(Blog $blog)
+    public function show(Teacher $teacher)
     {
-        abort_if(Gate::denies('blogs show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+//        abort_if(Gate::denies('blogs show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('backend.blogs.show', compact('blog'));
+        return view('backend.teacher.show', compact('teacher'));
     }
 
     public function edit(Blog $blog)
     {
-        abort_if(Gate::denies('blogs edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+//        abort_if(Gate::denies('blogs edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $edit = true;
-        return view('backend.blogs.form', compact('blog', 'edit'));
+        return view('backend.teacher.form', compact('blog', 'edit'));
     }
 
     public function update(FormBlogRequest $request, Blog $blog, UploadImageService $uploadImageService)
     {
-        abort_if(Gate::denies('blogs update'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+//        abort_if(Gate::denies('blogs update'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $blog->update($request->validated());
 
@@ -88,12 +90,12 @@ class BlogController extends Controller
             $blog->addMediaFromRequest('image')->toMediaCollection('blog_images');
         }
 
-        return redirect(route('backend.blogs.index'))->withSuccess(trans('backend.messages.success.update'));
+        return redirect(route('backend.teacher.index'))->withSuccess(trans('backend.messages.success.update'));
     }
 
     public function destroy(Blog $blog)
     {
-        abort_if(Gate::denies('blogs destroy'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+//        abort_if(Gate::denies('blogs destroy'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         try
         {
@@ -116,7 +118,7 @@ class BlogController extends Controller
     {
         try {
             // Refresh the media custom_properties
-            Media::where('collection_name', 'blog_images')->where('custom_properties', '<>', '[]')->update(['custom_properties' => []]);
+            Media::where('collection_name', 'teacher_images')->where('custom_properties', '<>', '[]')->update(['custom_properties' => []]);
 
             $media = Media::findOrFail($request['id']);
 
@@ -138,7 +140,7 @@ class BlogController extends Controller
 
     public function deleteimg(Request $request)
     {
-        abort_if(Gate::denies('blogs delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+//        abort_if(Gate::denies('blogs delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         try {
             $media = Media::findOrFail($request['id']);
@@ -157,15 +159,23 @@ class BlogController extends Controller
     {
         return datatables()
             ->of($data)
-            ->addColumn('image', function($row)
+//            ->addColumn('image', function($row)
+//            {
+//                $src = $row->getFirstMediaUrl('teacher_images','thumb-small') ?: asset('backend/img/noimage.jpg');
+//
+//                return '<img src="'.$src.'" alt="'.$row->transname.'" style="width:26px; object-fit: contain;">';
+//            })
+            ->addColumn('first_name', function($row)
             {
-                $src = $row->getFirstMediaUrl('blog_images','thumb-small') ?: asset('backend/img/noimage.jpg');
-
-                return '<img src="'.$src.'" alt="'.$row->transname.'" style="width:26px; object-fit: contain;">';
+                return Str::limit($row->first_name, 60);
             })
-            ->addColumn('name', function($row)
+            ->addColumn('last_name', function($row)
             {
-                return Str::limit($row->transname, 60);
+                return Str::limit($row->last_name, 60);
+            })
+            ->addColumn('email', function($row)
+            {
+                return Str::limit($row->email, 60);
             })
             ->addColumn('status', function($row)
             {
@@ -179,7 +189,7 @@ class BlogController extends Controller
             {
                 return $this->permissions($row->id);
             })
-            ->rawColumns(['image', 'status', 'actions'])
+            ->rawColumns(['first_name','last_name','email','status', 'actions'])
             ->skipPaging()
             ->setTotalRecords($count)
             ->setFilteredRecords($count)

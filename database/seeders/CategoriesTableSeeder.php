@@ -22,8 +22,9 @@ class CategoriesTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'English',
+                'parent_id' => 0,
                 'status' => '1',
+                'order' => 1,
                 'created_at' => '2022-05-18 11:48:59',
                 'updated_at' => '2022-05-18 11:48:59',
                 'deleted_at' => NULL,
@@ -31,21 +32,13 @@ class CategoriesTableSeeder extends Seeder
             1 => 
             array (
                 'id' => 2,
-                'name' => 'English',
+                'parent_id' => 0,
                 'status' => '1',
+                'order' => 2,
                 'created_at' => '2022-05-18 12:03:40',
                 'updated_at' => '2022-05-18 12:03:40',
                 'deleted_at' => NULL,
-            ),
-            3 =>
-                array (
-                    'id' => 3,
-                    'name' => 'Russian',
-                    'status' => '1',
-                    'created_at' => '2022-05-18 12:03:40',
-                    'updated_at' => '2022-05-18 12:03:40',
-                    'deleted_at' => NULL,
-                )
+            )
         ));
         
         
