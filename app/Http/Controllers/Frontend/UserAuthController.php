@@ -15,12 +15,10 @@ class UserAuthController extends Controller
 {
 
     public function signup(){
-
         return view('frontend.pages.auth.register');
     }
 
     public function register(Request $request){
-
         $user = [
             'uuid' =>rand(11111,99999),
             'first_name' =>$request-> name,
@@ -70,7 +68,7 @@ class UserAuthController extends Controller
             'password.required'=>'Email alanını boş bırakamazsınız'
         ]);
 
-        if ( $a= auth()->guard('web')->attempt(['email'=>$request->email,'password'=> $request->password]) ){
+        if ( $a = auth()->guard('web')->attempt(['email'=>$request->email,'password'=> $request->password]) ){
             request()->session()->regenerate();
 
             return redirect()->intended('/') ;
@@ -81,6 +79,8 @@ class UserAuthController extends Controller
         }
 
     }
+
+
 
     public function logout(Request $request){
 
