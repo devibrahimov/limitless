@@ -30,5 +30,5 @@
 @section('scripts')
     @js('backend/js/sweetalert.min.js')
     @js('backend/js/datatables.bundle.js')
-    @include('backend.includes.plugins.datatable',['columns'=>['id','title','price','status','actions'], 'route'=>route('backend.courses.index'), 'pageLength'=>10])
+    @include('backend.includes.plugins.datatable',['columns'=>['id','first_name','price','status','actions'], 'route'=>route('backend.courses.index'), 'pageLength'=>10])
 @endsection

@@ -45,9 +45,9 @@ class CourseController extends Controller
     public  function store(FormCourseRequest $request, UploadImageService $uploadImageService)
     {
         $course = Course::create($request->validated());
-        if ($request->hasFile('image')) {
-            $uploadImageService->upload($course, 'image', 'course_image', false, false);
-        }
+//        if ($request->hasFile('image')) {
+//            $uploadImageService->upload($course, 'image', 'course_image', false, false);
+//        }
         return redirect(route('backend.courses.index'))->withSuccess(trans('backend.messages.success.create'));
     }
 
@@ -124,11 +124,11 @@ class CourseController extends Controller
 //                }
 //                return '<img src="' . $src . '" alt="' . $course->transname . '" style="width:50px; object-fit: contain;">';
 //            })
-            ->addColumn('title', function ($row) {
-                return $row->link1;
+            ->addColumn('first_name', function ($row) {
+                return $row->teacher->first_name;
             })
             ->addColumn('price', function ($row) {
-                return $row->link2;
+                return $row->price;
             })
             ->addColumn('status', function ($row) {
                 return badge($row->status);
@@ -136,7 +136,7 @@ class CourseController extends Controller
             ->addColumn('actions', function ($row) {
                 return $this->permissions($row->id);
             })
-            ->rawColumns(['title','price', 'actions'])
+            ->rawColumns(['first_name','price','status', 'actions'])
             ->make(true);
     }
 

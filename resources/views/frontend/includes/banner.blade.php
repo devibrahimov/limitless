@@ -3,7 +3,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-8 order-lg-12 align-self-center">
                 @if(isset($slider))
-                    <div class="thumb b-animate-thumb"><img src="{{$src = $slider->getFirstMediaUrl('slider_image', 'thumb-small') ?: asset('backend/img/noimage.jpg') }}" alt="img" /></div>
+                    <div class="thumb b-animate-thumb"><img src="{{$src = $slider->getFirstMediaUrl('slider_image', 'thumb-small') ?: $slider->link }}" alt="img" /></div>
+{{--                    <div class="thumb b-animate-thumb"><img src="{{$src = $slider->getFirstMediaUrl('slider_image', 'thumb-small') ?: asset('backend/img/noimage.jpg') }}" alt="img" /></div>--}}
                 @endif
 
             </div>

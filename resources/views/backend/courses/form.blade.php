@@ -12,52 +12,52 @@
                             @method('PUT')
                         @endif
                         <div class="card-body">
-                            <div class="form-group row">
-                                <label class="col-form-label text-right col-lg-3 col-sm-12"></label>
-                                <div class="col-lg-6 col-md-9 col-sm-12">
-                                    <ul class="nav nav-light-primary nav-pills" role="tablist">
-                                        @foreach ($langs as $lang)
-                                            <li class="nav-item">
-                                                <a class="nav-link @if($loop->first) active @endif" id="tab-{{ $lang->code }}" data-toggle="tab" href="#{{ $lang->code }}">
-                                                    <span class="nav-text">{{ $lang->name }}</span>
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-content">
-                                @foreach ($langs as $lang)
-                                    <div class="tab-pane fade @if($loop->first) active show @endif" id="{{ $lang->code }}" role="tabpanel" aria-labelledby="tab-{{ $lang->code }}">
-                                        <div class="form-group row">
-                                            <label for="title:{{ $lang->code }}" class="col-form-label text-right col-lg-3 col-sm-12">
-                                                Title ({{ strtoupper($lang->code) }})
-                                            </label>
-                                            <div class="col-lg-6 col-md-9 col-sm-12">
-                                                <div class="input-group">
-                                                    <input id="title:{{ $lang->code }}" type="text" class="form-control @if($errors->has("title:$lang->code")) is-invalid @endif" name="title:{{ $lang->code }}" value="{{ isset($course) ? $course->translate($lang->code)->title : old('title:'.$lang->code) }}" placeholder="Title">
-                                                    @if ($errors->has("title:$lang->code"))
-                                                        <div class="invalid-feedback">{{ $errors->first("title:$lang->code") }}</div>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="content:{{ $lang->code }}" class="col-form-label text-right col-lg-3 col-sm-12">
-                                                @lang('backend.labels.description') ({{ strtoupper($lang->code) }})
-                                            </label>
-                                            <div class="col-lg-6 col-md-9 col-sm-12">
-                                                <div class="input-group">
-                                                    <textarea id="content:{{ $lang->code }}" type="text" class="form-control @if($errors->has("content:$lang->code")) is-invalid @endif" name="content:{{ $lang->code }}" placeholder="@lang('backend.placeholders.enter.description')"> {{ isset($course) ? $course->translate($lang->code)->content : old('content:'.$lang->code) }}</textarea>
-                                                    @if ($errors->has("content:$lang->code"))
-                                                        <div class="invalid-feedback">{{ $errors->first("content:$lang->code") }}</div>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
+{{--                            <div class="form-group row">--}}
+{{--                                <label class="col-form-label text-right col-lg-3 col-sm-12"></label>--}}
+{{--                                <div class="col-lg-6 col-md-9 col-sm-12">--}}
+{{--                                    <ul class="nav nav-light-primary nav-pills" role="tablist">--}}
+{{--                                        @foreach ($langs as $lang)--}}
+{{--                                            <li class="nav-item">--}}
+{{--                                                <a class="nav-link @if($loop->first) active @endif" id="tab-{{ $lang->code }}" data-toggle="tab" href="#{{ $lang->code }}">--}}
+{{--                                                    <span class="nav-text">{{ $lang->name }}</span>--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
+{{--                                        @endforeach--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="tab-content">--}}
+{{--                                @foreach ($langs as $lang)--}}
+{{--                                    <div class="tab-pane fade @if($loop->first) active show @endif" id="{{ $lang->code }}" role="tabpanel" aria-labelledby="tab-{{ $lang->code }}">--}}
+{{--                                        <div class="form-group row">--}}
+{{--                                            <label for="title:{{ $lang->code }}" class="col-form-label text-right col-lg-3 col-sm-12">--}}
+{{--                                                Title ({{ strtoupper($lang->code) }})--}}
+{{--                                            </label>--}}
+{{--                                            <div class="col-lg-6 col-md-9 col-sm-12">--}}
+{{--                                                <div class="input-group">--}}
+{{--                                                    <input id="title:{{ $lang->code }}" type="text" class="form-control @if($errors->has("title:$lang->code")) is-invalid @endif" name="title:{{ $lang->code }}" value="{{ isset($course) ? $course->translate($lang->code)->title : old('title:'.$lang->code) }}" placeholder="Title">--}}
+{{--                                                    @if ($errors->has("title:$lang->code"))--}}
+{{--                                                        <div class="invalid-feedback">{{ $errors->first("title:$lang->code") }}</div>--}}
+{{--                                                    @endif--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="form-group row">--}}
+{{--                                            <label for="content:{{ $lang->code }}" class="col-form-label text-right col-lg-3 col-sm-12">--}}
+{{--                                                @lang('backend.labels.description') ({{ strtoupper($lang->code) }})--}}
+{{--                                            </label>--}}
+{{--                                            <div class="col-lg-6 col-md-9 col-sm-12">--}}
+{{--                                                <div class="input-group">--}}
+{{--                                                    <textarea id="content:{{ $lang->code }}" type="text" class="form-control @if($errors->has("content:$lang->code")) is-invalid @endif" name="content:{{ $lang->code }}" placeholder="@lang('backend.placeholders.enter.description')"> {{ isset($course) ? $course->translate($lang->code)->content : old('content:'.$lang->code) }}</textarea>--}}
+{{--                                                    @if ($errors->has("content:$lang->code"))--}}
+{{--                                                        <div class="invalid-feedback">{{ $errors->first("content:$lang->code") }}</div>--}}
+{{--                                                    @endif--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
                             <div class="form-group row">
                                 <label for="price" class="col-form-label text-right col-lg-3 col-sm-12">
                                     Price
@@ -81,21 +81,6 @@
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input id="lecture" type="text" class="form-control @error('lecture') is-invalid @enderror" name="lecture" value="{{ isset($course) ? $course->lecture : old('lecture')  }}">
-                                        </div>
-                                        @error('lecture')
-                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="duraction" class="col-form-label text-right col-lg-3 col-sm-12">
-                                    Duraction
-                                </label>
-                                <div class="col-lg-6 col-md-9 col-sm-12">
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input id="duraction" type="text" class="form-control @error('duraction') is-invalid @enderror" name="duraction" value="{{ isset($course) ? $course->duraction : old('duraction')  }}">
                                         </div>
                                         @error('lecture')
                                         <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -154,27 +139,27 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label class="col-form-label text-right col-lg-3 col-sm-12">
-                                    @lang('backend.labels.image')
-                                    @if(!$edit)
-                                        <span class="text-danger">*</span>
-                                    @endif
-                                </label>
-                                <div class="col-lg-6 col-md-9 col-sm-12">
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input @error('image') is-invalid @enderror" name="image[]" multiple="multiple" accept="image/*">
-                                            <label class="custom-file-label">
-                                                @lang('backend.placeholders.choose.image')
-                                            </label>
-                                        </div>
-                                        @error('image')
-                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
+{{--                            <div class="form-group row">--}}
+{{--                                <label class="col-form-label text-right col-lg-3 col-sm-12">--}}
+{{--                                    @lang('backend.labels.image')--}}
+{{--                                    @if(!$edit)--}}
+{{--                                        <span class="text-danger">*</span>--}}
+{{--                                    @endif--}}
+{{--                                </label>--}}
+{{--                                <div class="col-lg-6 col-md-9 col-sm-12">--}}
+{{--                                    <div class="input-group">--}}
+{{--                                        <div class="custom-file">--}}
+{{--                                            <input type="file" class="custom-file-input @error('image') is-invalid @enderror" name="image[]" multiple="multiple" accept="image/*">--}}
+{{--                                            <label class="custom-file-label">--}}
+{{--                                                @lang('backend.placeholders.choose.image')--}}
+{{--                                            </label>--}}
+{{--                                        </div>--}}
+{{--                                        @error('image')--}}
+{{--                                        <div class="invalid-feedback d-block">{{ $message }}</div>--}}
+{{--                                        @enderror--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
 
                             <div class="form-group row">

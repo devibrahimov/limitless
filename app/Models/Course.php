@@ -15,7 +15,7 @@ class Course extends  Model implements HasMedia
 {
     use Translatable, InteractsWithMedia, TranslatableColumnsTrait, SpatieLogsActivity;
 
-    protected $fillable = ['status','title','duraction','lectures','price','content','teacher_id','level_id','category_id'];
+    protected $fillable = ['status','lectures','price','teacher_id','level_id','category_id'];
     protected $translatedAttributes = ['image_alt','title','content'];
     public $with = ['translations','media'];
 

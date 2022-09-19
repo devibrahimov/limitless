@@ -26,23 +26,22 @@ class FormCourseRequest extends FormRequest
         //        return Language::active()->get();
         //    });
 
-        $active_langs = Language::active()->get();
+//        $active_langs = Language::active()->get();
 
-        foreach ($active_langs as $lang){
-            $return[] = [
-                'title:' . $lang['code'] => ['nullable'],
-                'content:' . $lang['code'] => ['nullable'],
-            ];
-        }
+//        foreach ($active_langs as $lang){
+//            $return[] = [
+//                'title:' . $lang['code'] => ['nullable'],
+//                'content:' . $lang['code'] => ['nullable'],
+//            ];
+//        }
 
         // For Store
         $return[] = [
 //            'link'=>['string','nullable'],
-            'image' => 'nullable',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+//            'image' => 'nullable',
+//            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
            'level_id'       => 'required|integer|exists:levels,id',
            'price'       => 'nullable|integer',
-           'duraction'       => 'nullable|integer',
            'lectures'       => 'nullable|integer',
            'teacher_id'       => 'required|integer|exists:teachers,id',
            'category_id'       => 'required|integer|exists:categories,id',
@@ -51,20 +50,20 @@ class FormCourseRequest extends FormRequest
 
         // dd($return);
         // For Update
-        if ($this->filled('_method') && $this->get('_method') == 'PUT') {
-            $return[] = [
-                'image' => 'filled',
-            ];
-        }
+//        if ($this->filled('_method') && $this->get('_method') == 'PUT') {
+//            $return[] = [
+//                'image' => 'filled',
+//            ];
+//        }
 
         return Arr::collapse($return);
 
     }
 
-    public function attributes()
-    {
-        return [
-            'image'     => trans('backend.labels.image'),
-        ];
-    }
+//    public function attributes()
+//    {
+//        return [
+//            'image'     => trans('backend.labels.image'),
+//        ];
+//    }
 }
