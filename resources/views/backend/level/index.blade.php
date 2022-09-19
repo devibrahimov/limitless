@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="card card-custom">
                     @include('backend.includes.card.header', ['page' => 'levels'])
-                    @include('backend.blogs.tables.index')
+                    @include('backend.level.tables.index')
                 </div>
             </div>
         </div>

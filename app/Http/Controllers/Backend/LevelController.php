@@ -51,7 +51,7 @@ class LevelController extends Controller
      */
     public function store(FormLevelRequest $request, UploadImageService $uploadImageService)
     {
-        $teacher = Level::create($request->validated());
+        $level = Level::create($request->validated());
 
         return redirect(route('backend.levels.index'))->withSuccess(trans('backend.messages.success.create'));
     }
@@ -145,13 +145,13 @@ class LevelController extends Controller
     {
         return datatables()
             ->of($data)
-            ->addColumn('image', function ($row) {
-                $src = $row->getFirstMediaUrl('blog_images', 'thumb-small') ?: asset('backend/img/noimage.jpg');
-
-                return '<img src="' . $src . '" alt="' . $row->transname . '" style="width:26px; object-fit: contain;">';
-            })
+//            ->addColumn('image', function ($row) {
+//                $src = $row->getFirstMediaUrl('blog_images', 'thumb-small') ?: asset('backend/img/noimage.jpg');
+//
+//                return '<img src="' . $src . '" alt="' . $row->transname . '" style="width:26px; object-fit: contain;">';
+//            })
             ->addColumn('name', function ($row) {
-                return Str::limit($row->transname, 60);
+                return Str::limit($row->name, 60);
             })
             ->addColumn('status', function ($row) {
                 return badge($row->status);
@@ -162,7 +162,7 @@ class LevelController extends Controller
             ->addColumn('actions', function ($row) {
                 return $this->permissions($row->id);
             })
-            ->rawColumns(['image', 'status', 'actions'])
+            ->rawColumns(['name', 'status', 'actions'])
             ->skipPaging()
             ->setTotalRecords($count)
             ->setFilteredRecords($count)

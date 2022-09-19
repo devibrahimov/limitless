@@ -53,18 +53,6 @@ class CategoryController extends Controller
         abort_if(Gate::denies('categories create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $category = Category::create($request->validated());
 
-//        if ($request->hasFile('icon')) {
-//            $uploadImageService->upload($category, 'icon', 'category_icon', false, false);
-//        }
-//        if ($request->hasFile('image')) {
-//            $uploadImageService->upload($category, 'image', 'category_images', true, false);
-//        }
-//        if ($request->hasFile('cover')) {
-//            $uploadImageService->upload($category, 'cover', 'category_image', false, false);
-//        }
-
-
-
         return redirect(route('backend.categories.index'))->withSuccess(trans('backend.messages.success.create'));
     }
 
