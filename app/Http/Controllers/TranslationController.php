@@ -26,11 +26,9 @@ class TranslationController extends Controller
 
         $uploadedFile = $request->file('file');
         $filename = time().rand(11111,213123123).'.'.$uploadedFile->getClientOriginalExtension();
-        $uploadedFile->move(public_path('translations/'.$filename));
-
+        $uploadedFile->move(public_path('translations/'),$filename);
 
         $array = [
-
             'first_name'=> $request->first_name,
             'last_name'=>$request->last_name,
             'email'=>$request->email,
@@ -39,11 +37,12 @@ class TranslationController extends Controller
         ];
 
         Mail::send('frontend.pages.email_translation', $array,  function ($message) use($email,$filename)  {
-            $message->to( $email, 'Limitless');
+            $message->to($email, 'Limitless');
             $message->subject('translations');
             $message->attach(public_path('translations/'.$filename));
         });
 
+        return back();
 
     }
 
