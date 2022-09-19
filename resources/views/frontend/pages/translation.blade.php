@@ -33,33 +33,39 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-7">
-                    <form class="signin-inner">
+                    <form class="signin-inner" enctype="multipart/form-data" method="post" action="{{route('frontend.translation')}}">
                         <div class="row">
                             <div class="col-12">
                                 <div class="single-input-inner style-bg-border">
-                                    <input type="text" placeholder="First Name" />
+                                    <input type="text" placeholder="First Name" name="first_name" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="single-input-inner style-bg-border">
-                                    <input type="text" placeholder="Last Name" />
+                                    <input type="text" placeholder="Last Name" name="last_name" />
+                                </div>
+                            </div>
+                            @csrf
+                            <div class="col-12">
+                                <div class="single-input-inner style-bg-border">
+                                    <input type="text" placeholder="Email" name="email" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="single-input-inner style-bg-border">
-                                    <input type="text" placeholder="Email" />
+                                    <input type="tel" placeholder="Phone" name="phone" />
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="single-input-inner style-bg-border">
-                                    <input type="tel" placeholder="Phone" />
-                                </div>
-                            </div>
+
+
+
+
+
                             <div class="col-12">
                                 <div class="single-input-inner style-bg-border">
                                     <label for="real-life">
                                         <div class="file-group">
-                                            <input type="file" name="image" id="real-life" hidden />
+                                            <input type="file" name="file" id="real-life" hidden />
                                             <button type="button" id="custom-button">Choose file</button>
                                             <span id="custom-text">No file chosen</span>
                                         </div>
@@ -69,7 +75,7 @@
                         </div>
                         <div class="col-lg-12 mb-30">
                             <div class="col-12 mb-4">
-                                <button class="btn btn-base w-100">Send</button>
+                                <button type="submit" class="btn btn-base w-100">Send</button>
                             </div>
                         </div>
                     </form>
