@@ -27,6 +27,14 @@ class CourseController extends Controller
         return view('frontend.pages.course', compact('setting','slider','categories','courses','levels'));
     }
 
+    public function detail($id)
+    {
+        $diff = Course::active()->where('id','!=', $id)->get();
+        $course = Course::with('translations','level','category')->findOrFail($id);
+        return view('frontend.includes.course_detail', compact('course','diff'));
+    }
+
+
     public function CoursefilterQuery(Request $request)
     {
 

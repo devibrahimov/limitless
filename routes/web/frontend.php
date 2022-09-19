@@ -41,6 +41,7 @@ Route::post('/email',[EmailController::class,'sendmail'])->name('sendmail');
 Route::get('/translation',[\App\Http\Controllers\TranslationController::class,'index'])->name('translation');
 Route::post('/translation',[\App\Http\Controllers\TranslationController::class,'sendtranslation']) ;
 Route::resource('/course', CourseController::class);
+Route::get('/courses/{id}', [CourseController::class, 'detail'])->name('courses.detail');
 
 Route::get('/CoursefilterQuery', [CourseController::class,'CoursefilterQuery'])->name('CoursefilterQuery');
 
@@ -50,7 +51,7 @@ Route::group(['prefix' => 'cabinet'],function(){
     Route::get('/profil',[\App\Http\Controllers\Frontend\UserController::class,'profil'])->name('cabinet_profil');
     Route::get('/courses',[\App\Http\Controllers\Frontend\UserController::class,'courses'])->name('cabinet_courses');
     Route::get('/neticelerim',[\App\Http\Controllers\Frontend\UserController::class,'results'])->name('cabinet_results');
-    Route::post('/logout',[UserAuthController::class,'logout'])->name('cabinet_logout') ;
+    Route::get('/logout',[UserAuthController::class,'logout'])->name('cabinet_logout') ;
 });
 
 Route::group(['prefix' => 'teacher'],function(){

@@ -74,6 +74,36 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="lecture" class="col-form-label text-right col-lg-3 col-sm-12">
+                                    Lectures
+                                </label>
+                                <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input id="lecture" type="text" class="form-control @error('lecture') is-invalid @enderror" name="lecture" value="{{ isset($course) ? $course->lecture : old('lecture')  }}">
+                                        </div>
+                                        @error('lecture')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="duraction" class="col-form-label text-right col-lg-3 col-sm-12">
+                                    Duraction
+                                </label>
+                                <div class="col-lg-6 col-md-9 col-sm-12">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input id="duraction" type="text" class="form-control @error('duraction') is-invalid @enderror" name="duraction" value="{{ isset($course) ? $course->duraction : old('duraction')  }}">
+                                        </div>
+                                        @error('lecture')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="price" class="col-form-label text-right col-lg-3 col-sm-12">
                                     Teacher
                                 </label>

@@ -15,10 +15,10 @@
                     </div>
                     <div class="col-lg-9 align-self-center mt-5 mt-lg-0">
                         <div class="row justify-content-end">
-                            <i class="edit fa-regular fa-pen-to-square" style="font-size: 24px; cursor: pointer"></i>
+                            <a href=""><i class="edit fa-regular fa-pen-to-square" style="font-size: 24px; cursor: pointer"></i></a>
                         </div>
                         <div class="details">
-                            <h3><span class="first-name">Jane</span> <span class="last-name">Mileston</span></h3>
+                            <h3><span class="first-name">{{$user->first_name}}</span> <span class="last-name">{{$user->last_name}}</span></h3>
                             <!-- <span class="designation">Design Expert</span> -->
                             <h6 style="margin-top: 10px">Mail</h6>
                             <span class="email">{{$user->email}}</span>
@@ -26,12 +26,12 @@
                             <span class="phone">{{$user->phone}}</span>
                             <h6 style="margin-top: 10px">Level</h6>
                             <span class="level">Elementary</span>
-                            <h6 style="margin-top: 10px">Description</h6>
-                            <p class="mt-3 desc">
-                                The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick
-                                quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox.
-                                Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew
-                            </p>
+{{--                            <h6 style="margin-top: 10px">Description</h6>--}}
+{{--                            <p class="mt-3 desc">--}}
+{{--                                The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick--}}
+{{--                                quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox.--}}
+{{--                                Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew--}}
+{{--                            </p>--}}
                         </div>
                     </div>
                 </div>

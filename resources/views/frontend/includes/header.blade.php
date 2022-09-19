@@ -15,7 +15,7 @@
         <a href="/"><img src="{{asset('frontend/images/limitlesswhite.png')}}" alt="img" /></a>
       </div>
       <div class="nav-right-part nav-right-part-mobile">
-        <a class="signin-btn" href="signin.html">Sign In</a><a class="btn btn-base" href="blog.html">Sign Up</a
+        <a class="signin-btn" href="">Sign In</a><a class="btn btn-base" href="blog.html">Sign Up</a
         ><a class="search-bar" href="#"><i class="fa fa-search"></i></a>
       </div>
       <div class="collapse navbar-collapse go-top" id="edumint_main_menu">
@@ -55,7 +55,9 @@
           <li><a href="{{route('frontend.cabinet_profil')}}"> Profil </a></li>
           <li><a href="{{route('frontend.cabinet_courses')}}">Kurslar</a></li>
           <li><a href="{{route('frontend.cabinet_results')}}">Nəticələrim</a></li>
-          <li><a href="#">Çıxış</a></li>
+          <li>
+          <li><a href="{{route('frontend.cabinet_logout')}}">Cixis</a></li>
+          </li>
         </ul>
       </div>
 
@@ -63,7 +65,7 @@
 
       <div class="nav-right-part nav-right-part-desktop position-relative">
         <button class="profile">
-          <span>teacher: {{auth('teacher')->user()->first_name}}</span>
+          <span>{{auth('teacher')->user()->first_name}}</span>
           <img src="https://t3.ftcdn.net/jpg/02/65/18/30/360_F_265183061_NkulfPZgRxbNg3rvYSNGGwi0iD7qbmOp.jpg"
                   alt="Profile"   />
         </button>
@@ -71,7 +73,7 @@
           <li><a href="{{route('frontend.teacher_profil')}}"> Profil </a></li>
           <li><a href="{{route('frontend.teacher_courses')}}">Satılan Kurslar</a></li>
           <li><a href="{{route('frontend.teacher_earning')}}">Qazancım</a></li>
-          <li><a href="#">Çıxış</a></li>
+          <li><a href="{{route('frontend.teacher_logout')}}">Çıxış</a></li>
         </ul>
       </div>
 

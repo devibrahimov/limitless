@@ -19,6 +19,7 @@ class CreateCoursesTable extends Migration
             $table->unsignedBigInteger('level_id')->nullable();
             $table->decimal('lectures')->nullable();
             $table->decimal('price')->nullable();
+            $table->decimal('duraction')->nullable();
             $table->string('image', 255)->nullable();
             $table->enum('status', ['1', '0'])->default('1');
             $table->timestamps();

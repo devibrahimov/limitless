@@ -36,6 +36,7 @@ class UserAuthController extends Controller
             $message->to( $email, 'Limitless');
             $message->subject('Limitless');
         });
+        return view('frontend.pages.auth.signin');
 
     }
 
