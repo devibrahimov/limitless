@@ -38,7 +38,7 @@
                             </div>
                             <div class="media-body align-self-center">
                                 <h5>Our Phone</h5>
-                                <p>000 2324 39493</p>
+                                <p>{{\App\Models\Setting::with('translations')->where('name','phone')->first()['content'] ?? ''}}</p>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="media-body align-self-center">
                                 <h5>Our Email</h5>
-                                <p>name@website.com</p>
+                                <p>{{\App\Models\Setting::with('translations')->where('name','email')->first()['content'] ?? ''}}</p>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                             </div>
                             <div class="media-body align-self-center">
                                 <h5>Our Address</h5>
-                                <p>2 St, Loskia, amukara.</p>
+                                <p>{{\App\Models\Setting::with('translations')->where('name','location')->first()['content'] ?? ''}}</p>
                             </div>
                         </div>
                     </div>
@@ -82,8 +82,7 @@
                     <div class="section-title mb-0">
                         <h6 class="sub-title right-line">Get in touch</h6>
                         <h2 class="title">Write Us a Message</h2>
-                        <p class="content pb-3">The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax
-                            quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, </p>
+                        <p class="content pb-3">{{\App\Models\Setting::with('translations')->where('name','work_hour')->first()['content'] ?? ''}}</p>
                         <ul class="social-media style-base pt-3">
                             <li>
                                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>

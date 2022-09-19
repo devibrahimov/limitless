@@ -6,9 +6,9 @@
                     <div class="widget widget_contact">
                         <h4 class="widget-title">Contact Us</h4>
                         <ul class="details">
-{{--                            <li><i class="fa fa-map-marker"></i> {{\App\Models\Setting::where('name','location')->first()['content'] ?? ''}} <li>--}}
-{{--                            <li><i class="fa fa-envelope"></i> {{\App\Models\Setting::where('name','email')->first()['content'] ?? ''}}</li>--}}
-{{--                            <li><i class="fa fa-phone"></i>{{\App\Models\Setting::where('name','phone')->first()['content'] ?? ''}}</li>--}}
+                            <li><i class="fa fa-map-marker"></i> {{\App\Models\Setting::with('translations')->where('name','location')->first()['content'] ?? ''}} <li>
+                            <li><i class="fa fa-envelope"></i> {{\App\Models\Setting::with('translations')->where('name','email')->first()['content'] ?? ''}}</li>
+                            <li><i class="fa fa-phone"></i>{{\App\Models\Setting::with('translations')->where('name','phone')->first()['content'] ?? ''}}</li>
                         </ul>
                     </div>
                 </div>
@@ -67,20 +67,20 @@
                 <div class="col-lg-4 col-md-6 order-lg-12 text-md-right align-self-center">
                     <ul class="social-media mt-md-0 mt-3">
                         <li>
-                            <a class="facebook" href="https://www.facebook.com/solverwp/"><i class="fa fa-facebook"></i></a>
+                            <a class="facebook" href="{{\App\Models\Setting::with('translations')->where('name','facebook')->first()['content'] ?? ''}}"><i class="fa fa-facebook"></i></a>
                         </li>
                         <li>
-                            <a class="twitter" href="https://www.twitter.com/solverwp"><i class="fa fa-twitter"></i></a>
+                            <a class="twitter" href="{{\App\Models\Setting::with('translations')->where('name','twitter')->first()['content'] ?? ''}}"><i class="fa fa-twitter"></i></a>
                         </li>
                         <li>
-                            <a class="instagram" href="https://www.youtube.com/solverwp/"><i class="fa fa-instagram"></i></a>
+                            <a class="instagram" href="{{\App\Models\Setting::with('translations')->where('name','instagram')->first()['content'] ?? ''}}"><i class="fa fa-instagram"></i></a>
                         </li>
                         <li>
-                            <a class="youtube" href="https://www.youtube.com/solverwp/"><i class="fa fa-youtube"></i></a>
+                            <a class="youtube" href="{{\App\Models\Setting::with('translations')->where('name','youtube')->first()['content'] ?? ''}}"><i class="fa fa-youtube"></i></a>
                         </li>
-                        <li>
-                            <a class="pinterest" href="https://www.pinterest.com/solverwp/"><i class="fa fa-pinterest"></i></a>
-                        </li>
+{{--                        <li>--}}
+{{--                            <a class="pinterest" href="https://www.pinterest.com/solverwp/"><i class="fa fa-pinterest"></i></a>--}}
+{{--                        </li>--}}
                     </ul>
                 </div>
                 <div class="col-lg-4 order-lg-8 text-lg-center align-self-center mt-lg-0 mt-3"><p>copyright 2021 by edumint.com</p></div>

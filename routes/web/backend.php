@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\GoalController;
 use App\Http\Controllers\Backend\HomeCompareController;
 use App\Http\Controllers\Backend\InstallmentCardController;
 use App\Http\Controllers\Backend\InstallmentCardMonthController;
+use App\Http\Controllers\Backend\LessonController;
 use App\Http\Controllers\Backend\LevelController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\PartnerController;
@@ -140,6 +141,7 @@ Route::group(['middleware' => ['auth:admin', 'minify']], function ()
     Route::delete('/videos/{id}/deleteimg', [VideoController::class,'deleteimg'])->name('videos.deleteimg');
     Route::resource('/videos',          VideoController::class);
     Route::resource('/courses',          CourseController::class);
+    Route::resource('/lessons',          LessonController::class);
     Route::delete('/menus/{id}/deleteimg', [MenuController::class,'deleteimg'])->name('menus.deleteimg');
     Route::post('/menus/refresh',        [MenuController::class, 'refresh'])->name('menus.refresh');
     Route::resource('/menus',            MenuController::class);
