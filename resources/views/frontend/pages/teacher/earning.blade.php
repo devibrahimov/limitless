@@ -10,40 +10,39 @@
             <div class="team-details-page">
                 <div class="row">
                     <div class="col-lg-3">
-                        @include('frontend.pages.teacher.leftbar')
+                        <div class="sidebar">
+                            @include('frontend.pages.teacher.leftbar')
+                        </div>
                     </div>
-                    <div class="col-lg-9">
-                        <h3 class="mb-5">Nəticələrim</h3>
+                    <div class="col-lg-9 align-self-center mt-5 mt-lg-0">
+                        <h3 class="mb-5">Qazancım</h3>
                         <table class="table table-hover">
                             <thead>
                             <tr>
                                 <th scope="col">Tarix</th>
-                                <th scope="col">Fənn</th>
-                                <th scope="col">Müəllim</th>
-                                <th scope="col">Nəticə</th>
+                                <th scope="col">Tələbə sayı</th>
+                                <th scope="col">Qazanc</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td scope="row">20.05.2020</td>
-                                <td>Ana dili</td>
-                                <td>Rəna Salmanova</td>
-                                <td>55 bal</td>
+                                <td>4</td>
+                                <td>120 AZN</td>
                             </tr>
                             <tr>
                                 <td scope="row">21.05.2020</td>
-                                <td>Rus dili</td>
-                                <td>Sadiq Mənəfov</td>
-                                <td>60 bal</td>
+                                <td>6</td>
+                                <td>200 AZN</td>
                             </tr>
                             <tr>
                                 <td scope="row">20.06.2020</td>
-                                <td>İngilis dili</td>
-                                <td>Tofiq Muradov</td>
-                                <td>43 bal</td>
+                                <td>5</td>
+                                <td>150 AZN</td>
                             </tr>
                             </tbody>
                         </table>
+                        <h5 class="mb-5 text-right">Ümumi qazanc: 470 AZN</h5>
                     </div>
                 </div>
             </div>

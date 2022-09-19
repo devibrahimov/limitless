@@ -10,8 +10,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\CourseTranslation;
+use App\Models\Level;
 use App\Models\Setting;
 use App\Models\Slider;
+use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
@@ -19,9 +21,17 @@ class CourseController extends Controller
     {
         $slider = Slider::active()->orderBy('id', 'DESC')->first();
         $setting = Setting::orderBy('created_at', 'asc')->first();
-        $categories = CategoryTranslation::all();
-        $courses = Course::with('translations')->paginate(5);
-        return view('frontend.pages.course', compact('setting','slider','categories','courses'));
+        $categories = Category::all();
+        $courses = Course::with('translations','level','category')->paginate(5);
+        $levels = Level::all();
+        return view('frontend.pages.course', compact('setting','slider','categories','courses','levels'));
+    }
+
+    public function CoursefilterQuery(Request $request)
+    {
+
+        $courses = Course::filter()->with('translations','level','category')->paginate(5);
+        return view('frontend.includes.courseList',compact('courses'));
     }
 
     public function create()

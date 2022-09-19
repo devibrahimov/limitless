@@ -40,12 +40,14 @@
           <li><a href="{{route('frontend.contact')}}">Contact Us</a></li>
         </ul>
       </div>
-        @auth()
 
-            @if(auth()->guard('web'))
+
+        @auth('web')
+
+
       <div class="nav-right-part nav-right-part-desktop position-relative">
         <button class="profile">
-          <span>Jane</span>
+          <span>{{auth('web')->user()->first_name}}</span>
           <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                   alt="Profile"   />
         </button>
@@ -56,11 +58,26 @@
           <li><a href="#">Çıxış</a></li>
         </ul>
       </div>
-            @endif
 
+         @elseauth('teacher')
+
+      <div class="nav-right-part nav-right-part-desktop position-relative">
+        <button class="profile">
+          <span>teacher: {{auth('teacher')->user()->first_name}}</span>
+          <img src="https://t3.ftcdn.net/jpg/02/65/18/30/360_F_265183061_NkulfPZgRxbNg3rvYSNGGwi0iD7qbmOp.jpg"
+                  alt="Profile"   />
+        </button>
+        <ul class="dropdown">
+          <li><a href="{{route('frontend.teacher_profil')}}"> Profil </a></li>
+          <li><a href="{{route('frontend.teacher_courses')}}">Satılan Kurslar</a></li>
+          <li><a href="{{route('frontend.teacher_earning')}}">Qazancım</a></li>
+          <li><a href="#">Çıxış</a></li>
+        </ul>
+      </div>
 
         @else
             <div class="nav-right-part nav-right-part-desktop">
+                <a class="signin-btn" href="{{route('frontend.teacher_signin')}}">For Teacher</a>
                 <a class="signin-btn" href="{{route('frontend.signin')}}">Sign In</a>
                 <a class="btn btn-base" href="{{route('frontend.signup')}}">Register</a>
             </div>

@@ -42,12 +42,27 @@ Route::get('/translation',[\App\Http\Controllers\TranslationController::class,'i
 Route::post('/translation',[\App\Http\Controllers\TranslationController::class,'sendtranslation']) ;
 Route::resource('/course', CourseController::class);
 
+Route::get('/CoursefilterQuery', [CourseController::class,'CoursefilterQuery'])->name('CoursefilterQuery');
+
 
 
 Route::group(['prefix' => 'cabinet'],function(){
     Route::get('/profil',[\App\Http\Controllers\Frontend\UserController::class,'profil'])->name('cabinet_profil');
     Route::get('/courses',[\App\Http\Controllers\Frontend\UserController::class,'courses'])->name('cabinet_courses');
     Route::get('/neticelerim',[\App\Http\Controllers\Frontend\UserController::class,'results'])->name('cabinet_results');
+    Route::post('/logout',[UserAuthController::class,'logout'])->name('cabinet_logout')->name('cabinet_logout') ;
+});
+
+Route::group(['prefix' => 'teacher'],function(){
+
+    Route::get('/signin',[\App\Http\Controllers\Frontend\TeacherAuthController::class,'signin'])->name('teacher_signin');
+    Route::post('/signin',[\App\Http\Controllers\Frontend\TeacherAuthController::class,'login']) ;
+    Route::post('/logout',[\App\Http\Controllers\Frontend\TeacherAuthController::class,'logout'])->name('logout') ;
+
+    Route::get('/profil',[\App\Http\Controllers\Frontend\TeacherController::class,'profil'])->name('teacher_profil');
+    Route::get('/courses',[\App\Http\Controllers\Frontend\TeacherController::class,'courses'])->name('teacher_courses');
+    Route::get('/earning',[\App\Http\Controllers\Frontend\TeacherController::class,'earning'])->name('teacher_earning');
+    Route::post('/logout',[\App\Http\Controllers\Frontend\TeacherAuthController::class,'logout'])->name('teacher_logout') ;
 
 });
 
