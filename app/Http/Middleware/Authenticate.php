@@ -15,9 +15,9 @@ class Authenticate extends Middleware
                 return route('backend.login.form');
             }
 
-            if ($request->is('teacher') || $request->is('teacher/*'))
+            if ($request->is('teachers') || $request->is('teachers/*'))
             {
-                return route('teacher.login.form');
+                return route('teachers.login.form');
             }
 
             return route('login');

@@ -22,8 +22,8 @@ class RedirectIfAuthenticated
                     return redirect(route('backend.dashboard'));
                 }
 
-                if ($guard === 'teacher') {
-                    return redirect('/teacher');
+                if ($guard === 'teachers') {
+                    return redirect('/teachers');
                 }
 
                 return redirect(route('dashboard'));

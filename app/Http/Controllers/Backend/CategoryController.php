@@ -28,7 +28,7 @@ class CategoryController extends Controller
         if (request()->ajax()) {
             $limit = request('length');
             $start = request('start');
-            $data = Category::latest()->offset($start)->limit($limit)->get();
+            $data = Category::offset($start)->limit($limit)->get();
             $total_filtered = Category::count();
 
             return $this->dataTable($data, $total_filtered);
@@ -42,7 +42,7 @@ class CategoryController extends Controller
     {
         abort_if(Gate::denies('categories create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = Category::active()->get();
+        $categories = Category::get();
         $edit = false;
 
         return view('backend.categories.form', compact('categories', 'edit'));
