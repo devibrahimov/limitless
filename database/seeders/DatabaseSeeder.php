@@ -23,6 +23,10 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call(CategoriesTableSeeder::class);
+        $this->call(SliderSeeder::class);
+        $this->call(SliderTranslationsSeeder::class);
+        $this->call(VidoSeeder::class);
+        $this->call(VideoTranslationsSeeder::class);
 //        $this->call(CategoryTranslationsTableSeeder::class);
         $this->call(MediaTableSeeder::class);
         $this->call(MenusTableSeeder::class);

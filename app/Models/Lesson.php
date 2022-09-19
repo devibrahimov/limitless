@@ -11,11 +11,11 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Course extends  Model implements HasMedia
+class Lesson extends  Model implements HasMedia
 {
     use Translatable, InteractsWithMedia, TranslatableColumnsTrait, SpatieLogsActivity;
 
-    protected $fillable = ['status','lectures','price','teacher_id','level_id','category_id'];
+    protected $fillable = ['status','title','content','course_id','level_id','category_id'];
     protected $translatedAttributes = ['image_alt','title','content'];
     public $with = ['translations','media'];
 
@@ -71,9 +71,9 @@ class Course extends  Model implements HasMedia
         return $this->belongsTo(Level::class);
     }
 
-    public function teacher()
+    public function course()
     {
-        return $this->belongsTo(Teacher::class);
+        return $this->belongsTo(Course::class);
     }
 
     public function category()

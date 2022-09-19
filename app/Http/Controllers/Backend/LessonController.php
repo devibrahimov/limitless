@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\FormSliderRequest;
 use App\Http\Requests\Backend\FormvideoRequest;
 use App\Http\Requests\FormCourseRequest;
+use App\Http\Requests\FormLessonRequest;
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Lesson;
 use App\Models\Level;
 use App\Models\Slider;
 use App\Models\Teacher;
@@ -20,35 +22,35 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\Language;
 
-class CourseController extends Controller
+class LessonController extends Controller
 {
     public function index()
     {
 
         if (request()->ajax()) {
-            return $this->dataTable(Course::all());
+            return $this->dataTable(Lesson::all());
         }
 
-        return view('backend.courses.index');
+        return view('backend.lessons.index');
     }
 
     public function create()
     {
         $edit = false;
         $langs = Language::active()->get();
-        $teachers =  Teacher::get();
+        $courses =  Course::get();
         $levels =  Level::get();
         $categories =  Category::get();
-        return view('backend.courses.form', compact('edit','langs','teachers','levels','categories'));
+        return view('backend.lessons.form', compact('edit','langs','courses','levels','categories'));
     }
 
-    public  function store(FormCourseRequest $request, UploadImageService $uploadImageService)
+    public  function store(FormLessonRequest $request, UploadImageService $uploadImageService)
     {
-        $course = Course::create($request->validated());
-//        if ($request->hasFile('image')) {
-//            $uploadImageService->upload($course, 'image', 'course_image', false, false);
-//        }
-        return redirect(route('backend.courses.index'))->withSuccess(trans('backend.messages.success.create'));
+        $course = Lesson::create($request->validated());
+        if ($request->hasFile('image')) {
+            $uploadImageService->upload($course, 'image', 'lesson_image', false, false);
+        }
+        return redirect(route('backend.lessons.index'))->withSuccess(trans('backend.messages.success.create'));
     }
 
     public function show(video $video)
@@ -124,11 +126,8 @@ class CourseController extends Controller
 //                }
 //                return '<img src="' . $src . '" alt="' . $course->transname . '" style="width:50px; object-fit: contain;">';
 //            })
-            ->addColumn('first_name', function ($row) {
-                return $row->teacher->first_name;
-            })
-            ->addColumn('price', function ($row) {
-                return $row->price;
+            ->addColumn('title', function ($row) {
+                return $row->title;
             })
             ->addColumn('status', function ($row) {
                 return badge($row->status);
@@ -136,7 +135,7 @@ class CourseController extends Controller
             ->addColumn('actions', function ($row) {
                 return $this->permissions($row->id);
             })
-            ->rawColumns(['first_name','price','status', 'actions'])
+            ->rawColumns(['title','status', 'actions'])
             ->make(true);
     }
 

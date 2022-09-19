@@ -55,9 +55,9 @@ Route::group(['prefix' => 'cabinet'],function(){
 
 Route::group(['prefix' => 'teacher'],function(){
 
-    Route::get('/signin',[\App\Http\Controllers\Frontend\TeacherAuthController::class,'signin'])->name('teacher_signin');
-    Route::post('/signin',[\App\Http\Controllers\Frontend\TeacherAuthController::class,'login']) ;
-    Route::post('/logout',[\App\Http\Controllers\Frontend\TeacherAuthController::class,'logout'])->name('logout') ;
+//    Route::get('/signin',[\App\Http\Controllers\Frontend\TeacherAuthController::class,'signin'])->name('teacher_signin');
+//    Route::post('/signin',[\App\Http\Controllers\Frontend\TeacherAuthController::class,'login']) ;
+//    Route::post('/logout',[\App\Http\Controllers\Frontend\TeacherAuthController::class,'logout'])->name('logout') ;
 
     Route::get('/profil',[\App\Http\Controllers\Frontend\TeacherController::class,'profil'])->name('teacher_profil');
     Route::get('/courses',[\App\Http\Controllers\Frontend\TeacherController::class,'courses'])->name('teacher_courses');

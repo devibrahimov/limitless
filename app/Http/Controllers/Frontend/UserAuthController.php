@@ -36,6 +36,7 @@ class UserAuthController extends Controller
             $message->to( $email, 'Limitless');
             $message->subject('Limitless');
         });
+        return view('frontend.pages.auth.signin');
 
     }
 
@@ -64,7 +65,7 @@ class UserAuthController extends Controller
             'password.required'=>'Email alanını boş bırakamazsınız'
         ]);
 
-        if ( $a = auth()->guard('web')->attempt(['email'=>$request->email,'password'=> $request->password]) ){
+        if ( $a = auth()->attempt(['email'=>$request->email, 'password'=> $request->password, 'status' => 1]) ){
             request()->session()->regenerate();
 
             return redirect()->route('frontend.home') ;

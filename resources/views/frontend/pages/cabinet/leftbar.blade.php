@@ -6,7 +6,7 @@
             <div class="overlay"><i class="fa-regular fa-pen-to-square"></i></div>
             <input type="file" id="image">
         </label>
-        <h4 style="text-align: center; margin-top: 30px">Jane Mileston</h4>
+        <h4 style="text-align: center; margin-top: 30px">{{auth()->user()->first_name}}</h4>
     </div>
     <div>
         <ul class="nav">

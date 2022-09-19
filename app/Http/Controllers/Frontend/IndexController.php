@@ -21,6 +21,7 @@ class IndexController extends Controller
 
 //        $about_us = AboutBlock::active()->take(3)->get();
         $slider = Slider::active()->orderBy('created_at', 'asc')->first();
+
         $video = Video::active()->orderBy('created_at', 'asc')->first();
 //        $setting = Setting::orderBy('created_at', 'asc')->first();
         $menus = Menu::orderBy('created_at', 'asc')->get();
