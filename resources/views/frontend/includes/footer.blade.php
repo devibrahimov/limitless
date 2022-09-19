@@ -64,6 +64,7 @@
 {{--                    <a href="index.html"><img src="/demo/react/edumint/assets/img/footer-logo.png" alt="img" /></a>--}}
                     <a href="index.html"><img src="{{asset('frontend/images/footer-logo.png')}}" alt="img" /></a>
                 </div>
+
                 <div class="col-lg-4 col-md-6 order-lg-12 text-md-right align-self-center">
                     <ul class="social-media mt-md-0 mt-3">
                         <li>

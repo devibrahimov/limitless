@@ -67,6 +67,9 @@ Route::group(['prefix' => 'teacher'],function(){
 });
 
 
+
+
+
 Route::get('/register',[UserAuthController::class,'signup'])->name('signup');
 Route::post('/register',[UserAuthController::class,'register']) ;
 
