@@ -4,6 +4,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\Frontend\AboutBlockController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\BrandController;
+use App\Http\Controllers\Frontend\FreeLessonController;
 use App\Http\Controllers\Frontend\GoalController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\UserAuthController;
@@ -44,6 +45,7 @@ Route::resource('/course', CourseController::class);
 Route::get('/courses/{id}', [CourseController::class, 'detail'])->name('courses.detail');
 
 Route::get('/CoursefilterQuery', [CourseController::class,'CoursefilterQuery'])->name('CoursefilterQuery');
+Route::resource('/freeLesson', FreeLessonController::class);
 
 
 

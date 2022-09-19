@@ -18,25 +18,25 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form class="contact-form-inner mt-mn-100 style-shadow">
+                    <form  action="{{route('frontend.freeLesson.store')}}"  method="POST" class="contact-form-inner mt-mn-100 style-shadow">
+                        @csrf
                         <div class="section-title">
                             <h2 class="title">Register for 2 free trial</h2>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="single-input-inner"><input type="text" placeholder="Full name"/></div>
+                                <div class="single-input-inner"><input type="text" name="first_name" placeholder="Ad"/></div>
                             </div>
                             <div class="col-md-12">
-                                <div class="single-input-inner"><input type="text" placeholder="Phone Number"/></div>
+                                <div class="single-input-inner"><input type="text" name="last_name" placeholder="Soyad"/></div>
                             </div>
                             <div class="col-md-12">
-                                <div class="single-input-inner"><input type="text" placeholder="Email Address"/></div>
+                                <div class="single-input-inner"><input type="text"  name="phone" placeholder="Telefon"/></div>
                             </div>
                             <div class="col-md-12">
-                                <div class="single-input-inner"><input type="password" placeholder="Password"/></div>
+                                <div class="single-input-inner"><input type="text" name="email" placeholder="Email Address"/></div>
                             </div>
-
-                            <div class="col-sm-12 text-sm-right"><a class="btn btn-base" href="#">Send Message</a></div>
+                            <div class="col-sm-12 text-sm-right"><button type="submit">Göndər</button></div>
                         </div>
                     </form>
                 </div>

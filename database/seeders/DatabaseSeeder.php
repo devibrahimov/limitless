@@ -27,6 +27,9 @@ class DatabaseSeeder extends Seeder
         $this->call(SliderTranslationsSeeder::class);
         $this->call(VidoSeeder::class);
         $this->call(VideoTranslationsSeeder::class);
+        $this->call(BlogSeeder::class);
+        $this->call(BlogTranslationsSeeder::class);
+        $this->call(LevelSeeder::class);
 //        $this->call(CategoryTranslationsTableSeeder::class);
         $this->call(MediaTableSeeder::class);
         $this->call(MenusTableSeeder::class);

@@ -35,7 +35,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single-blog-inner style-border">
                         <div class="thumb">
-                            <img src="{{ $new->getFirstMediaUrl('blog_images','thumb-medium') }}" alt="img">
+                            <img src="{{ $new->getFirstMediaUrl('blog_images','thumb-medium')  ?: $new->image_alt }}" alt="img">
                         </div>
                         <div class="details">
                             <ul class="blog-meta">
