@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-8 order-lg-12 align-self-center">
-{{--                <div class="thumb b-animate-thumb"><img src="{{$slider->getFirstMediaUrl('slider_image','thumb-large') }}" alt="img" /></div>--}}
+                <div class="thumb b-animate-thumb"><img src="{{$slider->getFirstMediaUrl('slider_image','thumb-large') }}" alt="img" /></div>
             </div>
             <div class="col-lg-7 order-lg-1 align-self-center">
                 <div class="banner-inner text-center text-lg-left mt-5 mt-lg-0">

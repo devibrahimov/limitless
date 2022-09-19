@@ -10,7 +10,7 @@
             <div class="team-details-page">
                 <div class="row">
                     <div class="col-lg-3">
-                        @include('frontend.pages.teacher.leftbar')
+                        @include('frontend.pages.cabinet.leftbar')
                     </div>
                     <div class="col-lg-9">
                         <h3 class="mb-5">Nəticələrim</h3>

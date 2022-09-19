@@ -146,7 +146,7 @@ class CategoryController extends Controller
             ->of($data)
 
             ->addColumn('name', function (Category $category) {
-                return $category->transname ?? '';
+                return $category->name ?? '';
             })
             ->addColumn('status', function ($row) {
                 return badge($row->status);

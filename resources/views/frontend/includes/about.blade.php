@@ -15,10 +15,11 @@
                                 <iframe width="420" height="315"
                                         src="{{$video->link1 ?? '#'}}">
                                 </iframe>
+
                             </div>
-                            <div class="play-icon">
-                                <i class="far fa-play-circle"></i>
-                            </div>
+{{--                            <div class="play-icon">--}}
+{{--                                <i class="far fa-play-circle"></i>--}}
+{{--                            </div>--}}
                         </div>
                         <div
                                 class="col-12 col-md-6 col-lg-4 item filter-item-1 shuffle-item shuffle-item--visible"
@@ -29,9 +30,9 @@
                                         src="{{$video->link2 ?? '#'}}">
                                 </iframe>
                             </div>
-                            <div class="play-icon">
-                                <i class="far fa-play-circle"></i>
-                            </div>
+{{--                            <div class="play-icon">--}}
+{{--                                <i class="far fa-play-circle"></i>--}}
+{{--                            </div>--}}
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 item filter-item-1 shuffle-item shuffle-item--visible" style="position: relative">
                             <div class="chose-wrapper pl-25 pl-lg-0 pl-md-0 pl-xs-0">

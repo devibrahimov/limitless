@@ -50,7 +50,7 @@ Route::group(['prefix' => 'cabinet'],function(){
     Route::get('/profil',[\App\Http\Controllers\Frontend\UserController::class,'profil'])->name('cabinet_profil');
     Route::get('/courses',[\App\Http\Controllers\Frontend\UserController::class,'courses'])->name('cabinet_courses');
     Route::get('/neticelerim',[\App\Http\Controllers\Frontend\UserController::class,'results'])->name('cabinet_results');
-    Route::post('/logout',[UserAuthController::class,'logout'])->name('cabinet_logout')->name('cabinet_logout') ;
+    Route::post('/logout',[UserAuthController::class,'logout'])->name('cabinet_logout') ;
 });
 
 Route::group(['prefix' => 'teacher'],function(){

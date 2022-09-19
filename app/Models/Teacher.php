@@ -75,4 +75,9 @@ class Teacher extends Authenticatable
             ->optimize()
             ->queued();
     }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }

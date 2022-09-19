@@ -26,7 +26,7 @@ class TeacherAuthController extends Controller
         if ( $a = auth()->guard('teacher')->attempt(['email'=>$request->email,'password'=> $request->password]) ){
             request()->session()->regenerate();
 
-         return redirect()->intended('/') ;
+         return redirect()->route('frontend.home') ;
         }else{
          $errors = ['email'=>'Yanlış giriş məlumatları'];
          return back()->withErrors($errors);

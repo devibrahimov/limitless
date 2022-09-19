@@ -67,7 +67,7 @@ class UserAuthController extends Controller
         if ( $a = auth()->guard('web')->attempt(['email'=>$request->email,'password'=> $request->password]) ){
             request()->session()->regenerate();
 
-            return redirect()->intended('/') ;
+            return redirect()->route('frontend.home') ;
         }else{
 
             $errors = ['email'=>'Yanlış giriş məlumatları'];

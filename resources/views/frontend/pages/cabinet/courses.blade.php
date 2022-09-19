@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="sidebar">
-                            @include('frontend.pages.teacher.leftbar')
+                            @include('frontend.pages.cabinet.leftbar')
                         </div>
                     </div>
                     <div class="col-lg-9 align-self-center mt-5 mt-lg-0">

@@ -11,7 +11,7 @@
             <div class="team-details-page">
                 <div class="row">
                     <div class="col-lg-3">
-                        @include('frontend.pages.teacher.leftbar')
+                        @include('frontend.pages.cabinet.leftbar')
                     </div>
                     <div class="col-lg-9 align-self-center mt-5 mt-lg-0">
                         <div class="row justify-content-end">
