@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form  action="{{route('frontend.freeLesson.store')}}"  method="POST" class="contact-form-inner mt-mn-100 style-shadow">
+                    <form  action="{{route('frontend.freeLesson.store')}}"  method="post" class="contact-form-inner mt-mn-100 style-shadow">
                         @csrf
                         <div class="section-title">
                             <h2 class="title">Register for 2 free trial</h2>
@@ -36,7 +36,7 @@
                             <div class="col-md-12">
                                 <div class="single-input-inner"><input type="text" name="email" placeholder="Email Address"/></div>
                             </div>
-                            <div class="col-sm-12 text-sm-right"><button type="submit">Göndər</button></div>
+                            <div class="col-sm-12 text-sm-right"><button class="btn btn-base" type="submit">Send Message</button></div>
                         </div>
                     </form>
                 </div>
