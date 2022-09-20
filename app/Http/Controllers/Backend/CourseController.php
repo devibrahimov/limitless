@@ -11,6 +11,7 @@ use App\Models\Course;
 use App\Models\Level;
 use App\Models\Slider;
 use App\Models\Teacher;
+use App\Models\User;
 use App\Models\Video;
 use App\Services\MediaLibrary\UploadImageService;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class CourseController extends Controller
     {
         $edit = false;
         $langs = Language::active()->get();
-        $teachers =  Teacher::get();
+        $teachers =  User::where('type',1)->get();
         $levels =  Level::get();
         $categories =  Category::get();
         return view('backend.courses.form', compact('edit','langs','teachers','levels','categories'));
@@ -44,6 +45,7 @@ class CourseController extends Controller
 
     public  function store(FormCourseRequest $request, UploadImageService $uploadImageService)
     {
+//        dd($request->validated());
         $course = Course::create($request->validated());
 //        if ($request->hasFile('image')) {
 //            $uploadImageService->upload($course, 'image', 'course_image', false, false);
@@ -125,7 +127,7 @@ class CourseController extends Controller
 //                return '<img src="' . $src . '" alt="' . $course->transname . '" style="width:50px; object-fit: contain;">';
 //            })
             ->addColumn('first_name', function ($row) {
-                return $row->teacher->first_name;
+                return $row->user->first_name;
             })
             ->addColumn('price', function ($row) {
                 return $row->price;

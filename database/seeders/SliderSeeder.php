@@ -25,8 +25,4 @@ class SliderSeeder extends Seeder
 
 
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> main

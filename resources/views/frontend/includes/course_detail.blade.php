@@ -37,7 +37,8 @@
                             <h3 class="title"><a href="#">{{$course->title}}</a></h3>
                         </div>
                         <div class="thumb">
-                            <img src="{{$course->getFirstMediaUrl('course_image','thumb-large') }}" alt="img" />
+{{--                            <img src="{{$course->getFirstMediaUrl('course_image','thumb-large') }}" alt="img" />--}}
+                            <img src="https://solverwp.com/demo/react/edumint/assets/img/banner/1.png" alt="img" />
                         </div>
                         <div class="course-details-nav-tab text-center">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -322,7 +323,7 @@
                                 <li><i class="fa fa-clipboard"></i><span>Lectures :</span>{{$course->lectures}}</li>
                                 <li><i class="fa fa-clone"></i><span>Categories:</span> {{$course->category->name}}</li>
 {{--                                <li><i class="fa fa-tags"></i><span>Tags:</span> Android, JavaScript</li>--}}
-                                <li><i class="fa fa-clipboard"></i><span>Instructor:</span> {{$course->teacher->first_name}}</li>
+                                <li><i class="fa fa-clipboard"></i><span>Instructor:</span> {{$course->user->first_name}}</li>
                             </ul>
                             <div class="price-wrap text-center">
                                 <h5>Price:<span>${{$course->price}}</span></h5>

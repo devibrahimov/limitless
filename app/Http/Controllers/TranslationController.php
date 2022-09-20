@@ -26,7 +26,7 @@ class TranslationController extends Controller
 
         $uploadedFile = $request->file('file');
         $filename = time().rand(11111,213123123).'.'.$uploadedFile->getClientOriginalExtension();
-        $uploadedFile->move(public_path('translations/'.$filename));
+        $uploadedFile->move(public_path('translations/'),$filename);
 
 
         $array = [

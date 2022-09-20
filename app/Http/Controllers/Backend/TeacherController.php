@@ -28,8 +28,8 @@ class TeacherController extends Controller
         {
             $limit = request('length');
             $start = request('start');
-            $count = Teacher::count();
-            $data = Teacher::latest()->offset($start)->limit($limit)->get();
+            $count = User::where('type',1)->count();
+            $data = User::where('type',1)->latest()->offset($start)->limit($limit)->get();
 
             return $this->dataTable($data, $count);
         }
@@ -185,10 +185,10 @@ class TeacherController extends Controller
             {
                 return badge($row->status);
             })
-            ->addColumn('created_at', function($row)
-            {
-                return $row->created_at->format('d-m-Y H:i:s');
-            })
+//            ->addColumn('created_at', function($row)
+//            {
+//                return $row->created_at->format('d-m-Y H:i:s');
+//            })
             ->addColumn('actions', function($row)
             {
                 return $this->permissions($row->id);

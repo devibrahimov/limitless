@@ -40,11 +40,11 @@ class FormCourseRequest extends FormRequest
 //            'link'=>['string','nullable'],
 //            'image' => 'nullable',
 //            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-           'level_id'       => 'required|integer|exists:levels,id',
+           'level_id'       => 'nullable|integer|exists:levels,id',
            'price'       => 'nullable|integer',
            'lectures'       => 'nullable|integer',
-           'teacher_id'       => 'required|integer|exists:teachers,id',
-           'category_id'       => 'required|integer|exists:categories,id',
+           'user_id'       => 'nullable|integer|exists:users,id',
+           'category_id'       => 'nullable|integer|exists:categories,id',
             'status' => ['nullable'],
         ];
 

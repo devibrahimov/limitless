@@ -14,7 +14,7 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', static function (Blueprint $table)
         {
             $table->increments('id');
-            $table->unsignedBigInteger('teacher_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('level_id')->nullable();
             $table->decimal('lectures')->nullable();

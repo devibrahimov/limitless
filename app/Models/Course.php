@@ -15,7 +15,7 @@ class Course extends  Model implements HasMedia
 {
     use Translatable, InteractsWithMedia, TranslatableColumnsTrait, SpatieLogsActivity;
 
-    protected $fillable = ['status','lectures','price','teacher_id','level_id','category_id'];
+    protected $fillable = ['status','lectures','price','user_id','level_id','category_id'];
     protected $translatedAttributes = ['image_alt','title','content'];
     public $with = ['translations','media'];
 
@@ -71,9 +71,9 @@ class Course extends  Model implements HasMedia
         return $this->belongsTo(Level::class);
     }
 
-    public function teacher()
+    public function user()
     {
-        return $this->belongsTo(Teacher::class);
+        return $this->belongsTo(User::class);
     }
 
     public function category()

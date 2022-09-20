@@ -48,8 +48,5 @@ class SliderTranslationsSeeder extends Seeder
 
 
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> main
+

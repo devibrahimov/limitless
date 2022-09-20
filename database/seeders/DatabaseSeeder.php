@@ -27,12 +27,10 @@ class DatabaseSeeder extends Seeder
         $this->call(SliderTranslationsSeeder::class);
         $this->call(VidoSeeder::class);
         $this->call(VideoTranslationsSeeder::class);
-<<<<<<< HEAD
         $this->call(BlogSeeder::class);
         $this->call(BlogTranslationsSeeder::class);
         $this->call(LevelSeeder::class);
-=======
->>>>>>> main
+
 //        $this->call(CategoryTranslationsTableSeeder::class);
         $this->call(MediaTableSeeder::class);
         $this->call(MenusTableSeeder::class);

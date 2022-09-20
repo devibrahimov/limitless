@@ -94,11 +94,11 @@
                                 </label>
                                 <div class="col-lg-6 col-md-9 col-sm-12">
                                     <div class="input-group">
-                                        <select class="form-control" name="teacher_id">
+                                        <select class="form-control" name="user_id">
                                             <option value="" disabled>None</option>
                                             @foreach($teachers as $key => $teacher)
                                                 <option value="{{ $teacher->id }}" {{ old($teacher->first_name) == $teacher->id ? "selected" : "" }}
-                                                @if(isset($course->teacher_id) && $teacher->id == $value) selected @endif >{{ $teacher->first_name }}</option>
+                                                @if(isset($course->user_id) && $teacher->id == $value) selected @endif >{{ $teacher->first_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
