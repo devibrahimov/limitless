@@ -20,8 +20,8 @@ class EmailController extends Controller
         ];
 
         Mail::send('frontend.pages.email', $array,  function ($message) use($email)  {
-            $message->to( $email, 'Caspisnet');
-            $message->subject('Caspisnet');
+            $message->to( $email, 'Limitless');
+            $message->subject('Limitless Contact Form');
 
         });
 

@@ -15,9 +15,9 @@
         <div class="container">
             <div class="breadcrumb-inner">
                 <div class="section-title mb-0 text-center">
-                    <h2 class="page-title">Contact</h2>
+                    <h2 class="page-title">Contact Us</h2>
                     <ul class="page-list">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li>Contact</li>
                     </ul>
                 </div>
@@ -103,36 +103,37 @@
                     </div>
                 </div>
                 <div class="col-lg-8 mt-5 mt-lg-0">
-                    <form class="contact-form-inner  mt-5 mt-md-0">
+                    <form class="contact-form-inner  mt-5 mt-md-0" action="{{route('frontend.sendmail')}}" method="post">
+
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="single-input-inner style-bg-border">
-                                    <input type="text" placeholder="First Name">
+                                    <input type="text" placeholder="Name Surname" name="name">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="single-input-inner style-bg-border">
-                                    <input type="text" placeholder="Last Name">
+                                    <input type="text" placeholder="Phone" name="phone">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="single-input-inner style-bg-border">
-                                    <input type="text" placeholder="Email">
+                                    <input type="email" placeholder="Email" name="email">
                                 </div>
                             </div>
-
+                            @csrf
                             <div class="col-6">
                                 <div class="single-input-inner style-bg-border">
-                                    <input type="text" placeholder="Subject">
+                                    <input type="text" placeholder="Subject" name="subject">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="single-input-inner style-bg-border">
-                                    <textarea placeholder="Message"></textarea>
+                                    <textarea placeholder="Message" name="msg"></textarea>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-base">Send Message</button>
+                                <button type="submit" class="btn btn-base">Send Message</button>
                             </div>
                         </div>
                     </form>

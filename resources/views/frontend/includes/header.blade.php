@@ -42,9 +42,10 @@
       </div>
 
 
-        @auth('web')
+        @auth()
 
 
+            @if(auth()->user()->type == 0)
       <div class="nav-right-part nav-right-part-desktop position-relative">
         <button class="profile">
           <span>{{auth('web')->user()->first_name}}</span>
@@ -60,12 +61,17 @@
           </li>
         </ul>
       </div>
+       @endif
+        @if(auth()->user()->type == 1)
 
-         @elseauth('teacher')
 
       <div class="nav-right-part nav-right-part-desktop position-relative">
         <button class="profile">
+<<<<<<< HEAD
           <span>{{auth('teacher')->user()->first_name}}</span>
+=======
+          <span>teacher: {{auth()->user()->first_name}}</span>
+>>>>>>> main
           <img src="https://t3.ftcdn.net/jpg/02/65/18/30/360_F_265183061_NkulfPZgRxbNg3rvYSNGGwi0iD7qbmOp.jpg"
                   alt="Profile"   />
         </button>
@@ -76,10 +82,10 @@
           <li><a href="{{route('frontend.teacher_logout')}}">Çıxış</a></li>
         </ul>
       </div>
+       @endif
 
         @else
             <div class="nav-right-part nav-right-part-desktop">
-                <a class="signin-btn" href="{{route('frontend.teacher_signin')}}">For Teacher</a>
                 <a class="signin-btn" href="{{route('frontend.signin')}}">Sign In</a>
                 <a class="btn btn-base" href="{{route('frontend.signup')}}">Register</a>
             </div>

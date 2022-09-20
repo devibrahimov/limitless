@@ -11,4 +11,8 @@ class LessonTranslation extends Model
 
     public $fillable = ['image_alt','title','content'];
     public $timestamps = false;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

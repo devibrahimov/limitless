@@ -7,6 +7,7 @@ use App\Http\Requests\Backend\FormBlogRequest;
 use App\Http\Requests\Backend\FormTeacherRequest;
 use App\Models\Blog;
 use App\Models\Teacher;
+use App\Models\User;
 use App\Services\MediaLibrary\UploadImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -48,10 +49,13 @@ class TeacherController extends Controller
     public function store(FormTeacherRequest $request, UploadImageService $uploadImageService)
     {
 //        abort_if(Gate::denies('blogs store'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        Teacher::create($request->validated());
+        $validateddata = $request->validated();
+        $validateddata['type'] = 1;
+
+        User::create($validateddata);
         try {
             DB::transaction(function () use ($request, $uploadImageService) {
-                $teacher = Teacher::create($request->validated());
+                $teacher = User::create($request->validated());
 
                 if ($request->hasFile('image')) {
                     $teacher->addMediaFromRequest('image')->toMediaCollection('teacher_images');

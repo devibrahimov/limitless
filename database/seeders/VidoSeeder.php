@@ -26,4 +26,8 @@ class VidoSeeder extends Seeder
 
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

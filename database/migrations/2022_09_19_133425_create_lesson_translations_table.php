@@ -33,4 +33,8 @@ class CreateLessonTranslationsTable extends Migration
     {
         Schema::dropIfExists('lesson_translations');
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

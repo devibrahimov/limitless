@@ -14,7 +14,7 @@ class TeacherController extends Controller
 {
 
     public function profil(){
-        $user = Teacher::where(['id' => auth('teacher')->user()->id])->first();
+        $user = Teacher::where(['id' => auth()->user()->id])->first();
         return view('frontend.pages.teacher.profil',compact(['user']));
     }
 

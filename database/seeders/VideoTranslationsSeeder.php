@@ -47,4 +47,8 @@ class VideoTranslationsSeeder extends Seeder
 
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main
